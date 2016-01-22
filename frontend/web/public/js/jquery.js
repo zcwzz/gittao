@@ -1,223 +1,328 @@
-(function($) {
-	$.fn.validationEngineLanguage = function() {
-	};
-	$.validationEngineLanguage = {
-		newLang : function() {
-			$.validationEngineLanguage.allRules = {
-				"required" : { // Add your regex rules here, you can take
-					// telephone as an example
-					"regex" : "none",
-					"alertText" : "* 此处不可空白",
-					"alertTextCheckboxMultiple" : "* 请选择一个项目",
-					"alertTextCheckboxe" : "* 您必须钩选此栏",
-					"alertTextDateRange" : "* 日期范围不可空白"
-				},
-				"requiredInFunction" : {
-					"func" : function(field, rules, i, options) {
-						return (field.val() == "test") ? true : false;
-					},
-					"alertText" : "* Field must equal test"
-				},
-				"dateRange" : {
-					"regex" : "none",
-					"alertText" : "* 无效的 ",
-					"alertText2" : " 日期范围"
-				},
-				"dateTimeRange" : {
-					"regex" : "none",
-					"alertText" : "* 无效的 ",
-					"alertText2" : " 时间范围"
-				},
-				"minSize" : {
-					"regex" : "none",
-					"alertText" : "* 最少 ",
-					"alertText2" : " 个字符"
-				},
-				"maxSize" : {
-					"regex" : "none",
-					"alertText" : "* 最多 ",
-					"alertText2" : " 个字符"
-				},
-
-				"groupRequired" : {
-					"regex" : "none",
-					"alertText" : "* 你必需选填其中一个栏位"
-				},
-				"min" : {
-					"regex" : "none",
-					"alertText" : "* 最小值為 "
-				},
-				"max" : {
-					"regex" : "none",
-					"alertText" : "* 最大值为 "
-				},
-				"past" : {
-					"regex" : "none",
-					"alertText" : "* 日期必需早于 "
-				},
-				"future" : {
-					"regex" : "none",
-					"alertText" : "* 日期必需晚于 "
-				},
-				"maxCheckbox" : {
-					"regex" : "none",
-					"alertText" : "* 最多选取 ",
-					"alertText2" : " 个项目"
-				},
-				"minCheckbox" : {
-					"regex" : "none",
-					"alertText" : "* 请选择 ",
-					"alertText2" : " 个项目"
-				},
-				"equals" : {
-					"regex" : "none",
-					"alertText" : "* 请输入与上面相同的密码"
-				},
-				"creditCard" : {
-					"regex" : "none",
-					"alertText" : "* 无效的信用卡号码"
-				},
-				"phone" : {
-					// credit: jquery.h5validate.js / orefalo
-					"regex" : /^([\+][0-9]{1,3}([ \.\-])?)?([\(][0-9]{1,6}[\)])?([0-9 \.\-]{1,32})(([A-Za-z \:]{1,11})?[0-9]{1,4}?)$/,
-					"alertText" : "* 手机号格式不正确"
-				},
-
-				"email" : {
-					// Shamelessly lifted from Scott Gonzalez via the
-					// Bassistance Validation plugin
-					// http://projects.scottsplayground.com/email_address_validation/
-					"regex" : /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i,
-					"alertText" : "* 邮件地址无效"
-				},
-				"integer" : {
-					"regex" : /^[\-\+]?\d+$/,
-					"alertText" : "* 不是有效的整数"
-				},
-				"number" : {
-					// Number, including positive, negative, and floating
-					// decimal. credit: orefalo
-					"regex" : /^[\-\+]?((([0-9]{1,3})([,][0-9]{3})*)|([0-9]+))?([\.]([0-9]+))?$/,
-					"alertText" : "* 无效的数字"
-				},
-				"date" : {
-					"regex" : /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/,
-					"alertText" : "* 无效的日期，格式必需为 YYYY-MM-DD"
-				},
-				"ipv4" : {
-					"regex" : /^((([01]?[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))[.]){3}(([0-1]?[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))$/,
-					"alertText" : "* 无效的 IP 地址"
-				},
-				"url" : {
-					"regex" : /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i,
-					"alertText" : "* Invalid URL"
-				},
-				"onlyNumberSp" : {
-					"regex" : /^[0-9\ ]+$/,
-					"alertText" : "* 只能填数字"
-				},
-				"onlyLetterSp" : {
-					"regex" : /^[a-zA-Z\ \']+$/,
-					"alertText" : "* 只接受英文字母大小写"
-				},
-				"onlyLetterAccentSp" : {
-					"regex" : /^[a-z\u00C0-\u017F\ ]+$/i,
-					"alertText" : "* 只接受英文字母大小写"
-				},
-				"onlyLetterNumber" : {
-					"regex" : /^[0-9a-zA-Z]+$/,
-					"alertText" : "* 不接受特殊字符"
-				},
-				// --- CUSTOM RULES -- Those are specific to the demos, they can
-				// be removed or changed to your likings
-				"ajaxUserCall" : {
-					"url" : "ajaxValidateFieldUser",
-					// you may want to pass extra data on the ajax call
-					"extraData" : "name=eric",
-					"alertText" : "* 此名称已被其他人使用",
-					"alertTextLoad" : "* 正在确认名称是否有其他人使用，请稍等。"
-				},
-				"ajaxUserCallPhp" : {
-					"url" : "phpajax/ajaxValidateFieldUser.php",
-					// you may want to pass extra data on the ajax call
-					"extraData" : "name=eric",
-					// if you provide an "alertTextOk", it will show as a green
-					// prompt when the field validates
-					"alertTextOk" : "* 此帐号名称可以使用",
-					"alertText" : "* 此名称已被其他人使用",
-					"alertTextLoad" : "* 正在确认帐号名称是否有其他人使用，请稍等。"
-				},
-				"ajaxNameCall" : {
-					// remote json service location
-					"url" : "ajaxValidateFieldName",
-					// error
-					"alertText" : "* 此名称可以使用",
-					// if you provide an "alertTextOk", it will show as a green
-					// prompt when the field validates
-					"alertTextOk" : "* 此名称已被其他人使用",
-					// speaks by itself
-					"alertTextLoad" : "* 正在确认名称是否有其他人使用，请稍等。"
-				},
-				"ajaxNameCallPhp" : {
-					// remote json service location
-					"url" : "phpajax/ajaxValidateFieldName.php",
-					// error
-					"alertText" : "* 此名称已被其他人使用",
-					// speaks by itself
-					"alertTextLoad" : "* 正在确认名称是否有其他人使用，请稍等。"
-				},
-				"validate2fields" : {
-					"alertText" : "* 请输入 HELLO"
-				},
-				// tls warning:homegrown not fielded
-				"dateFormat" : {
-					"regex" : /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$|^(?:(?:(?:0?[13578]|1[02])(\/|-)31)|(?:(?:0?[1,3-9]|1[0-2])(\/|-)(?:29|30)))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:0?[1-9]|1[0-2])(\/|-)(?:0?[1-9]|1\d|2[0-8]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(0?2(\/|-)29)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$/,
-					"alertText" : "* 无效的日期格式"
-				},
-				// tls warning:homegrown not fielded
-				"dateTimeFormat" : {
-					"regex" : /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])\s+(1[012]|0?[1-9]){1}:(0?[1-5]|[0-6][0-9]){1}:(0?[0-6]|[0-6][0-9]){1}\s+(am|pm|AM|PM){1}$|^(?:(?:(?:0?[13578]|1[02])(\/|-)31)|(?:(?:0?[1,3-9]|1[0-2])(\/|-)(?:29|30)))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^((1[012]|0?[1-9]){1}\/(0?[1-9]|[12][0-9]|3[01]){1}\/\d{2,4}\s+(1[012]|0?[1-9]){1}:(0?[1-5]|[0-6][0-9]){1}:(0?[0-6]|[0-6][0-9]){1}\s+(am|pm|AM|PM){1})$/,
-					"alertText" : "* 无效的日期或时间格式",
-					"alertText2" : "可接受的格式： ",
-					"alertText3" : "mm/dd/yyyy hh:mm:ss AM|PM 或 ",
-					"alertText4" : "yyyy-mm-dd hh:mm:ss AM|PM"
-				},
-
-				// js 增加正则 2015/11/13
-				"chinese" : {
-					"regex" : /^[\u4E00-\u9FA5]+$/,
-					"alertText" : "* 只能填写中文汉字"
-				},
-				"pwd" : {
-					"regex" : /^[0-9a-zA-Z]{6,16}$/,
-					"alertText" : "*密码由6-16位数字、字母组成"
-				},
-				"mobile" : {
-					"regex" : /^1[3-9]\d{9}$/,
-					"alertText" : "*手机号格式不正确"
-				},
-				"logname" : {
-					"regex" : /^1[3-9]\d{9}$/,
-					"alertText" : "*登录格式为手机号码"
-				},
-				"ajaxVerify" : {
-					"url" : "phpajax/ajaxValidateVerify.php",
-					"extraData" : 'name=eric',
-					"alertTextOk" : '<strong style="color:#090;">√<strong>',
-					"alertText" : '<strong>×验证码输入错误</strong>',
-					"alertTextLoad" : ''
-				},
-				"ajaxPhoneCode" : {
-					"url" : "phpajax/ajaxValidateVerify.php",
-					"extraData" : 'name=eric',
-					"alertTextOk" : '<strong style="color:#090;">√<strong>',
-					"alertText" : '<strong>×验证码输入错误</strong>',
-					"alertTextLoad" : ''
-				}
-
-			};
-
-		}
-	};
-	$.validationEngineLanguage.newLang();
+(function ($) {
+    var LG = 'linear-gradient(top, #fafafa, #eee)',
+		CSS = '<style type="text/css">' + '#coBlank{position:absolute;z-index:2000;left:0;top:0;width:100%;height:0;background:black;}' + '.wrap_out{padding:5px;background:#eee;box-shadow:0 0 6px rgba(0,0,0,.5);position:absolute;z-index:2000;left:-9999px;}' + '.wrap_in{background:#fafafa;border:1px solid #ccc;}' + '.wrap_bar{border-bottom:1px solid #ddd;background:#f0f0f0;background:-moz-' + LG + ';background:-o-' + LG + ';background:-webkit-' + LG + ';background:' + LG + ';}' + '.wrap_title{line-height:24px;padding-left:10px;margin:0;font-weight:normal;font-size:1em;}' + '.wrap_close{position:relative;}' + '.wrap_close a{width:20px;height:20px;text-align:center;margin-top:-22px;color:#34538b;font:bold 1em/20px Tahoma;text-decoration:none;cursor:pointer;position:absolute;right:6px;}' + '.wrap_close a:hover{text-decoration:none;color:#f30;}' + '.wrap_body{background:white;}' + '.wrap_remind{width:16em;padding:30px 40px;}' + '.wrap_remind p{margin:10px 0 0;}' + '.submit_btn, .cancel_btn{display:inline-block;padding:3px 12px 1.99px;line-height:16px;border:1px solid;cursor:pointer;overflow:visible;}' + '.submit_btn{background:#486aaa;border-color:#a0b3d6 #34538b #34538b #a0b3d6;color:#f3f3f3;}' + '.submit_btn:hover{text-decoration:none;color:#fff;}' + '.cancel_btn{background:#eee;border-color:#f0f0f0 #bbb #bbb #f0f0f0;color:#333;}' + '</style>';
+    $("head").append(CSS);
+    var WRAP = '<div id="coBlank" onselectstart="return false;"></div>' + '<div class="wrap_out" id="wrapOut">' + '<div class="wrap_in" id="wrapIn">' + '<div id="wrapBar" class="wrap_bar" onselectstart="return false;">' + '<h4 id="wrapTitle" class="wrap_title"></h4>' + '<div class="wrap_close"><a href="javasctipt:" id="wrapClose" title="关闭"></a></div>' + '</div>' + '<div class="wrap_body" id="wrapBody"></div>' + '</div>' + '</div>';
+    $.fn.cobox = function (options) {
+        options = options || {};
+        var s = $.extend({}, coboxDefault, options);
+        return this.each(function () {
+            var node = this.nodeName.toLowerCase();
+            if (node === "a" && s.ajaxTagA) {
+                $(this).click(function () {
+                    var href = $.trim($(this).attr("href"));
+                    if (href && href.indexOf("javascript:") != 0) {
+                        if (href.indexOf('#') === 0) {
+                            $.cobox($(href), options)
+                        } else {
+                            $.cobox.loading();
+                            var myImg = new Image(),
+								element;
+                            myImg.onload = function () {
+                                var w = myImg.width,
+									h = myImg.height;
+                                if (w > 0) {
+                                    var element = $('<img src="' + href + '" width="' + w + '" height="' + h + '" />');
+                                    options.protect = false;
+                                    $.cobox(element, options)
+                                }
+                            };
+                            myImg.onerror = function () {
+                                $.cobox.ajax(href, {}, options)
+                            };
+                            myImg.src = href
+                        }
+                    }
+                    return false
+                })
+            } else {
+                $.cobox($(this), options)
+            }
+        })
+    };
+    $.cobox = function (elements, options) {
+        if (!elements) {
+            return
+        }
+        var s = $.extend({}, coboxDefault, options || {});
+        var eleOut = $("#wrapOut"),
+			eleBlank = $("#coBlank");
+        if (eleOut.size()) {
+            eleOut.show();
+            eleBlank[s.bg ? "show" : "hide"]()
+        } else {
+            $("body").append(WRAP)
+        }
+        if (typeof (elements) === "object") {
+            elements.show()
+        } else {
+            elements = $(elements)
+        }
+        $.o = {
+            s: s,
+            ele: elements,
+            bg: eleBlank.size() ? eleBlank : $("#coBlank"),
+            out: eleOut.size() ? eleOut : $("#wrapOut"),
+            tit: $("#wrapTitle"),
+            bar: $("#wrapBar"),
+            clo: $("#wrapClose"),
+            bd: $("#wrapBody")
+        };
+        $.o.tit.html(s.title);
+        $.o.clo.html(s.shut);
+        $.o.bd.empty().append(elements);
+        if ($.isFunction(s.onshow)) {
+            s.onshow()
+        }
+        $.cobox.setSize();
+        $.cobox.setPosition();
+        if (s.fix) {
+            $.cobox.setFixed()
+        }
+        if (s.drag) {
+            $.cobox.drag()
+        } else {
+            $(window).resize(function () {
+                $.cobox.setPosition()
+            })
+        }
+        if (!s.bar) {
+            $.cobox.barHide()
+        } else {
+            $.cobox.barShow()
+        }
+        if (!s.bg) {
+            $.cobox.bgHide()
+        } else {
+            $.cobox.bgShow()
+        }
+        if (!s.btnclose) {
+            $.cobox.closeBtnHide()
+        } else {
+            $.o.clo.click(function () {
+                $.cobox.hide();
+                return false
+            })
+        }
+        if (s.bgclose) {
+            $.cobox.bgClickable()
+        }
+        if (s.delay > 0) {
+            setTimeout($.cobox.hide, s.delay)
+        }
+    };
+    $.extend($.cobox, {
+        setSize: function () {
+            if (!$.o.bd.size() || !$.o.ele.size() || !$.o.bd.size()) {
+                return
+            }
+            $.o.out.css({
+                "width": $.o.s.width,
+                "height:": $.o.s.height
+            });
+            return $.o.out
+        },
+        setPosition: function (flag) {
+            flag = flag || false;
+            if (!$.o.bg.size() || !$.o.ele.size() || !$.o.out.size()) {
+                return
+            }
+            var w = $(window).width(),
+				h = $(window).height(),
+				st = $(window).scrollTop(),
+				ph = $("body").height();
+            if (ph < h) {
+                ph = h
+            }
+            $.o.bg.width(w).height(ph).css("opacity", $.o.s.opacity);
+            var xh = $.o.out.outerHeight(),
+				xw = $.o.out.outerWidth();
+            var t = st + (h - xh) / 2,
+				l = (w - xw) / 2;
+            if ($.o.s.fix && window.XMLHttpRequest) {
+                t = (h - xh) / 2
+            }
+            if (flag === true) {
+                $.o.out.animate({
+                    top: t,
+                    left: l
+                })
+            } else {
+                $.o.out.css({
+                    top: t,
+                    left: l,
+                    zIndex: $.o.s.index
+                })
+            }
+            return $.o.out
+        },
+        setFixed: function () {
+            if (!$.o.out || !$.o.out.size()) {
+                return
+            }
+            if (window.XMLHttpRequest) {
+                $.cobox.setPosition().css({
+                    position: "fixed"
+                })
+            } else {
+                $(window).scroll(function () {
+                    $.cobox.setPosition()
+                })
+            }
+            return $.o.out
+        },
+        bgClickable: function () {
+            if ($.o.bg && $.o.bg.size()) {
+                $.o.bg.click(function () {
+                    $.cobox.hide()
+                })
+            }
+        },
+        bgHide: function () {
+            if ($.o.bg && $.o.bg.size()) {
+                $.o.bg.hide()
+            }
+        },
+        bgShow: function () {
+            if ($.o.bg && $.o.bg.size()) {
+                $.o.bg.show()
+            } else {
+                $('<div id="coBlank"></div>').prependTo("body")
+            }
+        },
+        barHide: function () {
+            if ($.o.bar && $.o.bar.size()) {
+                $.o.bar.hide()
+            }
+        },
+        barShow: function () {
+            if ($.o.bar && $.o.bar.size()) {
+                $.o.bar.show()
+            }
+        },
+        closeBtnHide: function () {
+            if ($.o.clo && $.o.clo.size()) {
+                $.o.clo.hide()
+            }
+        },
+        hide: function () {
+            if ($.o.ele && $.o.out.size() && $.o.out.css("display") !== "none") {
+                $.o.out.fadeOut("fast", function () {
+                    if ($.o.s.protect && (!$.o.ele.hasClass("wrap_remind") || $.o.ele.attr("id"))) {
+                        $.o.ele.hide().appendTo($("body"))
+                    }
+                    $(this).remove();
+                    if ($.isFunction($.o.s.onclose)) {
+                        $.o.s.onclose()
+                    }
+                });
+                if ($.o.bg.size()) {
+                    $.o.bg.fadeOut("fast", function () {
+                        $(this).remove()
+                    })
+                }
+            }
+            return false
+        },
+        drag: function () {
+            if (!$.o.out.size() || !$.o.bar.size()) {
+                $(document).unbind("mouseover").unbind("mouseup");
+                return
+            }
+            var bar = $.o.bar,
+				out = $.o.out;
+            var drag = false;
+            var currentX = 0,
+				currentY = 0,
+				posX = out.css("left"),
+				posY = out.css("top");
+            bar.mousedown(function (e) {
+                drag = true;
+                currentX = e.pageX;
+                currentY = e.pageY
+            }).css("cursor", "move");
+            $(document).mousemove(function (e) {
+                if (drag) {
+                    var nowX = e.pageX,
+						nowY = e.pageY;
+                    var disX = nowX - currentX,
+						disY = nowY - currentY;
+                    out.css("left", parseInt(posX) + disX).css("top", parseInt(posY) + disY)
+                }
+            });
+            $(document).mouseup(function () {
+                drag = false;
+                posX = out.css("left");
+                posY = out.css("top")
+            })
+        },
+        loading: function () {
+            var element = $('<div class="wrap_remind">加载中...</div>');
+            $.cobox(element, {
+                bar: false
+            })
+        },
+        ask: function (message, sureCall, cancelCall, options) {
+            var element = $('<div class="wrap_remind">' + message + '<p><button id="coSureBtn" class="submit_btn">确认</button>&nbsp;&nbsp;<button id="coCancelBtn" class="cancel_btn">取消</button></p></div>');
+            $.cobox(element, options);
+            $("#coSureBtn").click(function () {
+                if ($.isFunction(sureCall)) {
+                    sureCall.call(this)
+                }
+                $.cobox.hide()
+            });
+            $("#coCancelBtn").click(function () {
+                if (cancelCall && $.isFunction(cancelCall)) {
+                    cancelCall.call(this)
+                }
+                $.cobox.hide()
+            })
+        },
+        remind: function (message, callback, options) {
+            var element = $('<div class="wrap_remind">' + message + '<p><button id="coSubmitBtn" class="submit_btn">确认</button</p></div>');
+            $.cobox(element, options);
+            $("#coSubmitBtn").click(function () {
+                if (callback && $.isFunction(callback)) {
+                    callback.call(this)
+                }
+                $.cobox.hide()
+            })
+        },
+        ajax: function (uri, params, options) {
+            if (uri) {
+                $.cobox.loading();
+                options = options || {};
+                options.protect = false;
+                $.ajax({
+                    url: uri,
+                    data: params || {},
+                    success: function (html, other) {
+                        $.cobox(html, options)
+                    },
+                    error: function () {
+                        $.cobox.remind("加载出了点问题。")
+                    }
+                })
+            }
+        }
+    });
+    var coboxDefault = {
+        title: "温馨提示",
+        shut: "×",
+        index: 2000,
+        opacity: 0.5,
+        width: "auto",
+        height: "auto",
+        bar: true,
+        bg: true,
+        btnclose: true,
+        fix: false,
+        bgclose: false,
+        drag: false,
+        ajaxTagA: true,
+        protect: "auto",
+        onshow: $.noop,
+        onclose: $.noop,
+        delay: 0
+    }
 })(jQuery);
