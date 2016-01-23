@@ -28,6 +28,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+		'request' => [
+            'enableCookieValidation' => true,
+            'cookieValidationKey' => 'adwdwdwadwawadwawadda',
+        ]
     ],
     'params' => $params,
 ];
