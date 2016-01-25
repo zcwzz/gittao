@@ -35,14 +35,12 @@ use yii\captcha\Captcha;
 						
 					</li>
 			      <li>
-				<? echo $form->field($model, 'hobby')->checkboxList(['0'=>'篮球','1'=>'足球','2'=>'羽毛球','3'=>'乒乓球']) ?>
-			      <span class="wida">
+				  <span class="wida">
 							<label style="color: red;">*</label>
 							&nbsp;&nbsp;类型：
 						</span>
 			      <span class="shangjiangCategroy">
-			      <input value="1" name="businessType" checked="checked" type="checkbox"> 兼职商家
-			      <input class="ml_10" name="businessType" value="2" type="checkbox"> 消费商家</span>
+			      <?= $form->field($model, 'businessType',['template'=>'<div><div>{input}</span></div> <div style="margin-left:100px;"><font color="red">{error}</font></div></div>'])->checkboxList(['2'=>'兼职商家','3'=>'消费商家']) ?></span>
 			     </li>
 					<li>
 						<span class="wida">

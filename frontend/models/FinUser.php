@@ -67,7 +67,7 @@ class FinUser extends \yii\db\ActiveRecord
 			'isPassword'=>'确认密码：',
 			'verifyCode'=>'验证码',
 			'merchantname'=>'公司名称',
-			'businessType'=>'类别',
+			'businessType'=>'',
 			];
     }
 }
