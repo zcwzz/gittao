@@ -117,9 +117,7 @@ $this->title = '商家消费明细';
                 </div> 
             </div>
         </div>
-        </div> 
-<style type="text/css">
+        </div>
+    <style type="text/css">
 		p{cursor:pointer}
-		
 	</style>
- 
