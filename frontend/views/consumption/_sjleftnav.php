@@ -16,8 +16,7 @@ use yii\helpers\Html;
                 <li><a id='b6'  onclick='show(6,7)'  href="<?= Url::to(['meger/safety']); ?>" atr="safe">账户安全</a></li>
                 <li><a id='b7'  onclick='show(7,7)'  href="<?= Url::to(['meger/balance']); ?>" atr="account">账户余额</a></li>
             </ul>
-        </div>
-
+        </div> 
 <script>
     function show(i,j){
         for(var k=1;k<=j;k++){
