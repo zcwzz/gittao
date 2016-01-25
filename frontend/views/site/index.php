@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 
 /* @var $this yii\web\View */
 
-$this->title = '逃学';
+$this->title = '逃学叭叭叭吧';
 ?>
 <div class="t_min t_tit">当前位置：<a href="#">首页</a></div>
     <div class="t_img" id="scrolldiv">

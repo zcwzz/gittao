@@ -23,9 +23,11 @@ AppAsset::register($this);
 <meta name="Keywords" content="" />
 <link rel="stylesheet" href="/public/css/style.css" />
 <link rel="stylesheet" href="/public/css/common.css" />
+<link rel="stylesheet" href="/public/css/pagecss.css" />
 <link rel="stylesheet" type="text/css" href="/public/css/reset.css"/>
 <link rel="stylesheet" type="text/css" href="/public/css/start.css" />
 <script type="text/javascript" src="/public/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/public/js/pagebase.js"></script>
 <style type="text/css">
         .tr:nth-of-type(even) {
              background: #F6F6F4;
@@ -52,11 +54,10 @@ AppAsset::register($this);
     </div>
     <!--head end-->
     <!--t_nav-->
-    <div class="t_nav">
+    <div class="t_nav" style='background: #444444 none repeat scroll 0 0;'>
         <div class="t_navy"></div>
-        <div class="t_navi t_min">
-            <div class="t_navb"></div>
-            <div class="t_le"><a href="index.html" title="趣淘学"><img src="/public/images/logo.png" width="213" height="90" border="0" /></a></div>
+        <div class="t_navi t_min"> 
+            <div class="t_le"><a href="index.html" title="black"><img src="/public/images/logo.png" width="200" height="100" border="0" /></a></div>
             <div class="t_le">
                 <ul>
                     <li class="menu bg"><a href="<?= Url::to(['site/index']); ?>">首&nbsp;&nbsp;页</a></li>
