@@ -45,6 +45,7 @@ AppAsset::register($this);
         <div class="t_min header">
             <div class="t_le">欢迎光临趣淘学<b>北京<a href="#">[切换城市]</a></b></div>
             <div class="t_ri">
+<<<<<<< HEAD
 			 <?php
 							$session = \Yii::$app->session;
 							$session->open();
@@ -56,6 +57,10 @@ AppAsset::register($this);
                 <span class="mtx"><a href="<?= Url::to(['user/index']); ?>">我的趣淘学</a> <a href="<?= Url::to(['user/outlogin']); ?>" class="a1">退出登陆</a></span>
 				<?php } ?>
 
+=======
+                <span><a href="<?= Url::to(['user/register']); ?>">注册 |</a> <a href="denglu.html" class="a1">登陆</a></span>
+                <span class="mtx"><a href="<?= Url::to(['consumption/index']); ?>">我的趣淘学</a></span>
+>>>>>>> 73747f5e658e285c7dbec209231a8c1cbf9daa27
                 <span> <a href="#">帮助中心</a></span>
                 <span class="app"><a href="#">APP</a></span>
             </div>
@@ -66,7 +71,7 @@ AppAsset::register($this);
     <div class="t_nav" style='background: #444444 none repeat scroll 0 0;'>
         <div class="t_navy"></div>
         <div class="t_navi t_min"> 
-            <div class="t_le"><a href="index.html" title="black"><img src="/public/images/logo.png" width="200" height="100" border="0" /></a></div>
+            <div class="t_le"><a href="index.html" title="black"><img src="/public/images/mlogo.png" width="200" height="100" border="0" /></a></div>
             <div class="t_le">
                 <ul>
                     <li class="menu bg"><a href="<?= Url::to(['site/index']); ?>">首&nbsp;&nbsp;页</a></li>
