@@ -1,6 +1,4 @@
-
-
-$(function (){
+﻿$(function (){
 		$('#agreement').click(function(){
 		
 		//反选$("input[name='chk_list']").attr("checked",$(this).attr("checked"));
