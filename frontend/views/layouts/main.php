@@ -27,7 +27,11 @@ AppAsset::register($this);
 <link rel="stylesheet" type="text/css" href="/public/css/reset.css"/>
 <link rel="stylesheet" type="text/css" href="/public/css/start.css" />
 <script type="text/javascript" src="/public/js/jquery-1.11.3.min.js"></script>
+<<<<<<< HEAD
+
+=======
 <script type="text/javascript" src="/public/js/pagebase.js"></script>
+>>>>>>> 7c8953e165c7b2ada0eadbc5b7530d60614cd0ca
 <style type="text/css">
         .tr:nth-of-type(even) {
              background: #F6F6F4;
