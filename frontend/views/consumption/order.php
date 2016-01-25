@@ -6,7 +6,6 @@ use yii\widgets\LinkPager;
  */
  $this->title = '商家订单';
 ?>
-
     <div class="t_min t_tit">当前位置：<a href="http://www.qutaoxue.net/">首页</a> &gt; 我的门店</div>
     <!--我的趣淘学-->
     <div class="t_min">
