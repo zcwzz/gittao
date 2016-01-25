@@ -78,7 +78,7 @@ use yii\widgets\LinkPager;
                 </div> 
             </div>
         </div>
-    </div> 
+    </div>
 <script>
 	$(function (){
 		$("#search_all").click(function (){
