@@ -1,3 +1,7 @@
+<?php
+use yii\helpers\Html;
+use yii\widgets\LinkPager;
+?>
 <html><head><script src="/public/js/jquery-1.js" type="text/javascript"></script>
 <script src="/public/js/globl.js" type="text/javascript"></script>
 <script type="text/javascript" src="/public/js/jsbase.js"></script>
@@ -50,25 +54,30 @@
                         <th>操作 </th>
                         </tr>
                     </thead>
-                    <tbody id="parttimedate"></tbody>
+                    <tbody id="parttimedate">
+					<?php foreach($job as $v){ ?>
+						<tr>
+							<td><?php echo $v['job_id'] ?></td>
+							<td><?php echo $v['job_name'] ?></td>
+							<td><?php echo $v['part_name'] ?></td>
+							<td><?php echo $v['job_id'] ?></td>
+							<td><?php echo $v['job_money'] ?></td>
+							<td><?php echo $v['count'] ?></td>
+							<td><?php echo $v['counts'] ?></td>
+							<td>审核</td>
+							<td>结算</td>
+						</tr>
+					<?php } ?>
+					</tbody>
                 </table>
                 <script type="text/template" id="parttimedateTemplate">
-                    <tr class="tr">
-						<td>{number}</td>
-                        <td><a href='javascript:void(0)' onclick='GLOBAL.pagebase.searchStudentInfo({jobId})'>{name}</a></td>
-						<td>{workTypeName}</td>
-                        <td>
-                            {workBegin}
-                            </br>到{workEnd}
-                        </td>
-                        <td>{salary}{salaryTypeName}</td>
-						<td>{total}</td>
-						<td>{applyCount}</td>
-                        <td>{status}</td>
-                        <td class="pay" style="cursor: pointer;color: red;" >{options} </td>
-                    </tr>
+                   
                         </script>
-                <div id="kkpager"><div><span class="disabled">首页</span><span class="disabled">上一页</span><span class="curr">1</span><span class="disabled">下一页</span><span class="disabled">尾页</span><span class="totalText"></span></div><div style="clear:both;"></div></div>
+                <div id="kkpager"><?= LinkPager::widget([
+	'pagination' => $pagination,
+	'prevPageLabel'=>'上一页',
+	'nextPageLabel'=>'下一页',
+	]) ?></div>
             </div>
         </div>
     </div>

@@ -9,6 +9,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use frontend\models\Jobdetails;
 use frontend\models\Upload;
+use frontend\models\Parttype;
 use yii\web\UploadedFile;
 /**
  * 安全保障
@@ -20,21 +21,64 @@ class BusinessController extends Controller
     public function actionIndex()
     {
         $model = new Upload();
+		 $job = new Jobdetails();
+		 $part = new Parttype();
+		 $data=$part->select();
 
         if (Yii::$app->request->isPost) {
+
 			$model->file = UploadedFile::getInstance($model,'file');
-			
+
+			 if ($model->file && $model->validate()) {
+				
+				$model->file->saveAs('uploads/'. $model->file->baseName . '.' . $model->file->extension);
+				$img='uploads/'. $model->file->baseName . '.' . $model->file->extension;
 		
-			$model->file->saveAs('uploads/'. $model->file->baseName . '.' . $model->file->extension);
-			print_r('uploads/'.$model->file->baseName.".".$model->file->extension);
+				$job -> merchants_id  = 1;
+				$job -> job_name  = Yii::$app->request->post('name');
+				$job -> job_type  = Yii::$app->request->post('workType');
+				$job -> job_people  = Yii::$app->request->post('total');
+				$job -> job_img  = $img;
+				$job -> job_money  = Yii::$app->request->post('salary');
+				$job -> job_treatment  = Yii::$app->request->post('payUnit');
+				$job -> pay_method  = Yii::$app->request->post('payStyle');
+				$job -> end_data  = Yii::$app->request->post('applyEnd');
+				$job -> job_start  = Yii::$app->request->post('workBegin');
+				$job -> job_end  = Yii::$app->request->post('workEnd');
+				$job -> work_start  = Yii::$app->request->post('workTimeHourBegin');
+				$job -> work_end  = Yii::$app->request->post('workTimeHourEnd');
+				$job -> commission  = Yii::$app->request->post('isDeduct');
+				$job -> cut_way  = 1;
+				$job -> sex  = Yii::$app->request->post('sex');
+				$job -> height  = Yii::$app->request->post('height');
+				$job -> job_content  = Yii::$app->request->post('workInfo');
+				$job -> job_require  = Yii::$app->request->post('jobDetails');
+				$job -> contact  = Yii::$app->request->post('contact');
+				$job -> contact_phone  = Yii::$app->request->post('contactTel');
+
+				$province  = Yii::$app->request->post('province');
+				$city  = Yii::$app->request->post('city');
+				$area  = Yii::$app->request->post('area');
+				$address  = Yii::$app->request->post('address');
+				$job -> working_place=$province.'/'.$city.'/'.$area.'/'.$address;
+				$job -> add_time  = time();
+				$job -> job_status = 1;
+				$job -> lng = 1;
+				$job -> lat = 1;
+				$arr=$job->save();
+
+			}
 			
 		}
 
-        return $this->render('index', ['model' => $model]);
+        return $this->render('index', ['model' => $model,'part'=>$data]);
     }
 	//兼职列表
 	public function actionLists(){
-		return $this->render('lists');
+			 $job = new Jobdetails();
+			  $data=$job->selects();
+			 
+		return $this->render('lists',$data);
 	}
 	
 

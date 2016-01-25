@@ -64,8 +64,12 @@
 			</p>
 		</div>
 
-		<!--<form method="post" action="index.php?r=business/position" class="frm" enctype="multipart/form-data">-->
-	<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data'],'action' => ['business/index'],'method'=>'post']) ?>
+	<!--	<form method="post" action="index.php?r=business/position" class="frm" enctype="multipart/form-data">-->
+	<?php $form = ActiveForm::begin([
+	'options' => ['enctype' => 'multipart/form-data','class' => 'frm'],
+	'action' => ['business/index'],
+	'method'=>'post',
+	]) ?>
 
 			<h3>兼职详情</h3>
 			<span id="">
@@ -74,21 +78,13 @@
 			</span>
 			<span id="">
 				<m>*</m><label>兼职类别：</label>
-		    <select id="workType" class="margleft6 validate[required]" placeholder="请输入兼职类别">
+		    <select name="workType" class="margleft6 validate[required]" placeholder="请输入兼职类别">
 			<option selected="selected" value="">请选择兼职类型</option>
-			<option atr="工作仔细认真、责任心强、吃苦耐劳，服从工作安排；性格开朗、充满自信，能够与陌生人主动沟通；为人正能量，有责任心，勇于自我提高；误放鸽子。" value="1">推广/注册</option>
-			<option atr="工作仔细认真、责任心强、吃苦耐劳，服从工作安排；性格开朗、充满自信，能够与陌生人主动沟通；为人正能量，有责任心，勇于自我提高；误放鸽子。不随意丢弃单页。" value="2">发单/举牌</option>
-			<option atr="工作仔细认真、责任心强、吃苦耐劳，服从工作安排；性格开朗、充满自信，能够与陌生人主动沟通；为人正能量，有责任心，勇于自我提高；误放鸽子，多劳多得；口齿伶俐热情叫卖，有促销经验优先，长相端正" value="3">促销/导购</option>
-			<option atr="工作仔细认真、责任心强、吃苦耐劳，服从工作安排；性格开朗、充满自信，能够与陌生人主动沟通；为人正能量，有责任心，勇于自我提高；误放鸽子。" value="4">销售/签单</option>
-			<option atr="工作仔细认真、责任心强、吃苦耐劳，服从工作安排；性格开朗、充满自信，能够与陌生人主动沟通；为人正能量，有责任心，勇于自我提高；误放鸽子。" value="5">充场/观众</option>
-			<option atr="工作仔细认真、责任心强、吃苦耐劳服，从工作安排；性格开朗、充满自信，能够与陌生人主动沟通；为人正能量，有责任心，勇于自我提高；误放鸽子。" value="6">调研/问卷</option>
-			<option atr="工作仔细认真、责任心强、吃苦耐劳，服从工作安排；性格开朗、充满自信，能够与陌生人主动沟通；为人正能量，有责任心，勇于自我提高；误放鸽子。" value="7">话务/客服</option>
-			<option atr="工作仔细认真、责任心强、吃苦耐劳服从工作安排；性格开朗、充满自信，能够与陌生人主动沟通；为人正能量，有责任心，勇于自我提高；误放鸽子；勤快、干净卫生，服从店长管理。" value="8">店员/服务生</option>
-			<option atr="工作仔细认真、责任心强、吃苦耐劳服从工作安排；性格开朗、充满自信，能够与陌生人主动沟通；为人正能量，有责任心，勇于自我提高；误放鸽子。" value="9">老师/家教</option>
-			<option atr="工作仔细认真、责任心强、吃苦耐劳服从工作安排；性格开朗、充满自信，能够与陌生人主动沟通；为人正能量，有责任心，勇于自我提高；误放鸽子；长相甜美，有礼仪经验者优先，报名后加微信发照片。" value="10">礼仪/模特</option>
-			<option atr="工作仔细认真、责任心强、吃苦耐劳服从工作安排；性格开朗、充满自信，能够与陌生人主动沟通；为人正能量，有责任心，勇于自我提高；误放鸽子。最好是艺术专业，有表演天分。" value="11">演艺/主持</option>
-			<option atr="工作仔细认真、责任心强、吃苦耐劳服从工作安排；性格开朗、充满自信，能够与陌生人主动沟通；为人正能量，有责任心，勇于自我提高；误放鸽子。1.负责保持与学校社团的良好关系并开展相关校园活动合作；2.负责执行一些合作公司的校园活动，协助其他高校主管一起完成任务；3.负责在你们学校组建一批与你志同道合的同学一起加入我们团队。" value="12">校园代理</option>
-			<option atr="" value="13">其他</option>
+			<?php foreach($part as $v){ ?>
+			<option atr="" value="<?php echo $v['part_id'] ?>"><?php echo $v['part_name'] ?></option>
+			<?php } ?>
+			
+	
 			</select>
 			</span>
 			<span id="">
@@ -111,7 +107,7 @@
 			</span>
 			<span id="">
 				<m>*</m><label>结算方式：</label>
-		 <select id="payStyle" class="margleft6">
+		 <select name="payStyle" class="margleft6">
 		<option selected="selected" value="1">当天结算</option>
           <option value="2">周末结算</option>
           <option value="3">月末结算</option>
@@ -225,7 +221,7 @@
 				<select name="area" id="area" class="validate[required]"></select>
 			</span>
 			<span class="pd55">
-			<div id="r-result">请输入:<input type="text" id="suggestId" size="20" value="百度" style="width:150px;" /></div>
+			<div id="r-result">请输入:<input type="text" id="suggestId" size="20" name="address" value="百度" style="width:150px;" /></div>
 	<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
 			</span>
 	
@@ -240,7 +236,7 @@
 				<m>温馨提示：岗位信息发布后将无法修改，请在信息核实无误后再发布！</m>
 			</span>
 			<?php ActiveForm::end() ?>
-		<!--	</form> -->
+			<!--</form> -->
                 </div>
             </div>
         </div>
