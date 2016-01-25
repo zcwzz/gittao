@@ -55,7 +55,7 @@ AppAsset::register($this);
     <div class="t_nav" style='background: #444444 none repeat scroll 0 0;'>
         <div class="t_navy"></div>
         <div class="t_navi t_min"> 
-            <div class="t_le"><a href="index.html" title="趣淘学"><img src="/public/images/logo.png" width="213" height="90" border="0" /></a></div>
+            <div class="t_le"><a href="index.html" title="black"><img src="/public/images/logo.png" width="213" height="90" border="0" /></a></div>
             <div class="t_le">
                 <ul>
                     <li class="menu bg"><a href="<?= Url::to(['site/index']); ?>">首&nbsp;&nbsp;页</a></li>
