@@ -8,14 +8,15 @@ use yii\widgets\LinkPager;
 ?>
     <div class="t_min t_tit">当前位置：<a href="http://www.qutaoxue.net/">首页</a> &gt; 我的门店</div>
     <!--我的趣淘学-->
-    <div class="t_min">
-        <?php echo $this->render('_sjleftnav');?>
-        <div class="mt_ri t_ri">
-            <div class="mt_rli">
-                <div class="right">
-                    <div class="tittle">
-                        <span>我的订单</span>
-                    </div>
+ <div class="t_min">
+     <?php echo $this->render('_sjleftnav');?>
+     <div class="mt_ri t_ri">
+         <div class="mt_rli">
+             <div class="studentdetailtop bor0">
+                <span id="" class="colorff5400">
+                    我的订单
+                </span>
+             </div>
                     <div class="budget" id="bussinfo">
 						根据：
                         <select id='key'>
@@ -78,8 +79,9 @@ use yii\widgets\LinkPager;
                 </div> 
             </div>
         </div>
+        <div class="clear"></div>
     </div>
- </div>
+
 <script>
 	$(function (){
 		$("#search_all").click(function (){
