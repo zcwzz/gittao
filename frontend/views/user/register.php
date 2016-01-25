@@ -18,7 +18,7 @@ use yii\captcha\Captcha;
 }
 </style>
 <script type="text/javascript" src='public/js/user.js'></script>
-<div id='bbba'></div>
+<div id='bbba'>shsshshsh</div>
 <div class="t_reg">
 	<div class="t_regtit" id="regType">
 		<ul>
