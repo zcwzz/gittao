@@ -45,7 +45,7 @@ GLOBAL.namespace('pagebase', function () {
 
     
  $('.tip_box').find('img').bind('click',function(){
-	 $('.qpzz').hide();
+     $('.qpzz').hide();
  });
   
   
@@ -106,14 +106,14 @@ GLOBAL.namespace('pagebase', function () {
             tophtml += ' <a href="' + GLOBAL.pagebase.UrlReg + '/merchant/merchantParttimeList"><span class="bg3">兼职审核</span></a>';
         }
         else {
-        	if(moneylist.status==1)
-        		{
-        		 tophtml += ' <a   href="###"  ><span class="bg1"  >账户已通过</span></a>';
-        		}
-        	else
-        		{
+            if(moneylist.status==1)
+                {
+                 tophtml += ' <a   href="###"  ><span class="bg1"  >账户已通过</span></a>';
+                }
+            else
+                {
             tophtml += ' <a   href="###"  ><span class="bg1"  id="btnApplyAccount" >申请账户</span></a>';
-        		}
+                }
         }
         tophtml += '</li>';
         tophtml += '</ul> <div class="clear"></div>';
@@ -156,16 +156,16 @@ GLOBAL.namespace('pagebase', function () {
         $('span[class="item"]').tooltip();//气泡
         
      $('#btnApplyAccount').bind('click',function(){
-    	 var _applyAccount= GLOBAL.cookie('applyAccount');
-  	           if(_applyAccount != 1)
-  	           {
-  	   		 GLOBAL.cookie('applyAccount', 1, ''), {expires: 7,path: '/'};
-  	   	 GLOBAL.pagebase.alertBoxHtml();
-  	   			   GLOBAL.pagebase.alertBox();
-  	           }
-  	           else{
-  	        	   alert('您已经申请过了,系统正在受理中!!!');
-  	           }
+         var _applyAccount= GLOBAL.cookie('applyAccount');
+               if(_applyAccount != 1)
+               {
+             GLOBAL.cookie('applyAccount', 1, ''), {expires: 7,path: '/'};
+         GLOBAL.pagebase.alertBoxHtml();
+                   GLOBAL.pagebase.alertBox();
+               }
+               else{
+                   alert('您已经申请过了,系统正在受理中!!!');
+               }
      });
     };
 
@@ -194,7 +194,7 @@ GLOBAL.namespace('pagebase', function () {
         + '    </div>'
         + '    <br /><br />'
         + '    <div style="float: right; margin-right: 20px;">'
-        + '      <input type="button" name="" id="studetailname" value="' + arg.btnsureText + '" style="width: 70px; height: 30px;border-radius:4px;background-color:#0089cf;color: white;"/>&nbsp;&nbsp;	'
+        + '      <input type="button" name="" id="studetailname" value="' + arg.btnsureText + '" style="width: 70px; height: 30px;border-radius:4px;background-color:#0089cf;color: white;"/>&nbsp;&nbsp;   '
         + '    <input type="button" name="" id="backname" value="' + arg.btnCancelText + '" style="width: 70px; height: 30px;border-radius:4px;background-color:#0089cf;color: white;"/>'
         + '    </div>'
         + '   </div>'
@@ -226,7 +226,7 @@ GLOBAL.namespace('pagebase', function () {
             async: false,
             
             success: function (data) {
-            	console.log(data);
+                console.log(data);
                 alert('申请成功!!');
                 $('div[id="applayAccount"]').hide();
             },
@@ -253,10 +253,10 @@ GLOBAL.namespace('pagebase', function () {
         money.value='';
         money.status='';
         if (_userInfo.userType == 2) {
-        	 money.value = new Number(0).format();
+             money.value = new Number(0).format();
         }
         else {
-        	 money.value = new Number(1000).format();
+             money.value = new Number(1000).format();
         }
         _dataHandle.postData({
             url: _serviceURL,
@@ -265,11 +265,11 @@ GLOBAL.namespace('pagebase', function () {
             success: function (data) {
                 if (data.data.length > 0) {
                     if (_userInfo.userType == 1) {
-                    	   money.value = new Number(data.data[0].balance + data.data[0].quota).format();
-                    	   money.status=data.data[0].status;
+                           money.value = new Number(data.data[0].balance + data.data[0].quota).format();
+                           money.status=data.data[0].status;
                     }
                     else {
-                    	 money.value = new Number(data.data[0].balance).format();
+                         money.value = new Number(data.data[0].balance).format();
                     }
                 }
 
@@ -372,9 +372,9 @@ GLOBAL.namespace('pagebase', function () {
                     }
                 }
                 $('div[id=listCity]').find('a').bind('click', function () {
-                	$(this).css('color','##ff5400');
+                    $(this).css('color','##ff5400');
                 
-                	   $('div[class="t_le"]').find('b[class="cityTitle f_l ml_10"]').html($(this).attr('icode'));
+                       $('div[class="t_le"]').find('b[class="cityTitle f_l ml_10"]').html($(this).attr('icode'));
                        $('div[class="t_le"]').find('b[class="cityTitle f_l ml_10"]').attr($(this).attr('atr'));
            
                        
