@@ -79,8 +79,3 @@ html { overflow-y: scroll; background:#f6f3ee;}
 .t_imglibt span.bg{ background:#e99313;}
 .t_imglibt a{ display:block; width:60px; height:5px;}
 .t_imglibg{ background:url(../images/tm.png) repeat; height:98px; line-height:80px; color:#fff; font-size:16px;  position:absolute; bottom:0; z-index:20px; text-align:center; width:100%;}
-#bbba{
-width:100px;
-height:1000px;
-border:2px solid red;
-}
