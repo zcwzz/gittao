@@ -52,7 +52,11 @@ class Module extends \yii\base\Module implements BootstrapInterface
      * The default value is `['127.0.0.1', '::1']`, which means the module can only be accessed
      * by localhost.
      */
+<<<<<<< HEAD
     public $allowedIPs = ['127.0.0.1', '::1','*','*'];
+=======
+    public $allowedIPs = ['127.0.0.1', '::1','*'];
+>>>>>>> 7c8953e165c7b2ada0eadbc5b7530d60614cd0ca
     /**
      * @var array|Generator[] a list of generator configurations or instances. The array keys
      * are the generator IDs (e.g. "crud"), and the array elements are the corresponding generator
