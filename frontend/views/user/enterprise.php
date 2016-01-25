@@ -5,6 +5,19 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\captcha\Captcha;
 ?>
+<style type="text/css">
+	#finuser-verifycode{
+  border: 1px solid #ccc;
+  color: #999;
+  font-size: 12px;
+  height: 36px;
+  padding: 0 5px;
+  width: 130px;
+
+ 
+}
+</style>
+<script type="text/javascript" src='public/js/user.js'></script>
 <div class="t_reg">
 		<div class="t_regtit" id="regType">
 			<ul>
@@ -21,7 +34,7 @@ use yii\captcha\Captcha;
 		<?php $form = ActiveForm::begin([
 		'action' => ['user/compgetpost'],
 		'method'=>'post',
-		'id'=>'studentRegForm',
+		'id'=>'businessForms',
 		]); ?>
 		<!-- <form id="businessForm"> -->
 			<!--注册信息-->
@@ -35,42 +48,29 @@ use yii\captcha\Captcha;
 						
 					</li>
 			      <li>
-				  <span class="wida">
-							<label style="color: red;">*</label>
-							&nbsp;&nbsp;类型：
-						</span>
-			      <span class="shangjiangCategroy">
-			      <?= $form->field($model, 'businessType',['template'=>'<div><div>{input}</span></div> <div style="margin-left:100px;"><font color="red">{error}</font></div></div>'])->checkboxList(['2'=>'兼职商家','3'=>'消费商家']) ?></span>
+			      <?= $form->field($model, 'businessType',['template'=>'<span class="wida"><label style="color: red;">*</label>{label}</span><span class="shangjiangCategroy">{input}</span><font color="red">{error}</font>'])->checkboxList(['2'=>'兼职商家','3'=>'消费商家']) ?></span>
 			     </li>
+			
 					<li>
-						<span class="wida">
-							<label style="color: red;">*</label>&nbsp;&nbsp;短信验证码：
-						</span>
-						<span>
-							<input name="smsValidCode" id="smsValidCode" value="" type="hidden">
-							<input name="smsValCode" id="smsValCode" data-prompt-position="centerRight:125,0" class="in2 validate[required] " placeholder="请输入验证码" type="text">
-						</span>
-						<span class="mag" style="cursor: pointer;margin-top:-0.1px;" id="smsValidCodeText">获取验证码
+						<?= $form->field($model, 'smsValCode',['template'=>'<div class="form-group field-studentregister-smsValidCode" style="float:left;"><label style="color: red;">*</label>&nbsp;{label}{input}<div style="margin-left:100px;"><font color="red">{error}</font></div>'])->textInput(['maxlength' => 11, 'class' =>'in2 validate[required]', 'placeholder'=>'请输入验证码']) ?>
+						<span class="mag" style="margin-top:1px;" id="smsValidCodeText" atr="0">获取验证码</span>
 						
-						</span>
-						<div class="clear"></div>
 					</li>
 					<li>
-						<span class="wida" >
-							<label style="color: red;" >*</label>&nbsp;&nbsp;设置密码：
-						</span>
-						<span >
-							<input name="password" id="password" class="in1 validate[required,custom[pwd]]" placeholder="请输入密码" type="password">
-						</span>
-						<div class="clear"></div>
+						<?= $form->field($model, 'verifyCode', ['template'=>'<div class="form-group field-user-user_phone required">&nbsp;&nbsp;<label style="color: red;">*</label>&nbsp;&nbsp;&nbsp;{label}{input}<div style="margin-left:100px;"><font color="red">{error}</font></div></div>',
+					'options' => ['class' => 'form-group form-group-lg']])->widget(Captcha::className(),[
+				   'template' => "{input}{image}",
+				   'imageOptions' => ['alt' => '验证码'],
+				   'captchaAction' => 'site/captcha',
+				]); ?>
+			
+					</li>
+						<li></li>
+					<li>
+						<?= $form->field($model, 'user_password',['template'=>'<div class="form-group field-studentregister-user_password">&nbsp;<label style="color: red;">*</label>&nbsp;&nbsp;&nbsp;{label}{input}<div style="margin-left:100px;"><font color="red">{error}</font></div></div>'])->passwordInput(['maxlength' => 20, 'class' =>'in1 validate[required,custom[pwd]]', 'placeholder'=>'请输入密码']) ?>
 					</li>
 					<li>
-						<span class="wida">
-							<label style="color: red;">*</label>&nbsp;&nbsp;确认密码：
-						</span>
-						<span>
-							<input name="isPassword" id="isPassword" class="in1 validate[condRequired[password],equals[password]]" placeholder="请输入确认密码" type="password">
-						</span>
+						<?= $form->field($model, 'isPassword',['template'=>'<div class="form-group field-studentregister-confirm_password">&nbsp;<label style="color: red;">*</label>&nbsp;&nbsp;&nbsp;{label}{input}<div style="margin-left:100px;"><font color="red">{error}</font></div></div>'])->passwordInput(['maxlength' => 20, 'class' =>'in1 validate[required,custom[pwd]]', 'placeholder'=>'请输入密码']) ?>
 						<div class="clear"></div>
 					</li>
 					<p>
@@ -82,7 +82,7 @@ use yii\captcha\Captcha;
 					<li>
 						<span class="wida">&nbsp;</span>
 						<span>
-							<input name="button" id="studentRegBtn" value="提交注册" class="bt1 " type="button">
+							<input name="button" id="studentRegBtn" value="提交注册" class="bt1 " type="submit">
 						</span>
 						<div class="clear"></div>
 					</li>

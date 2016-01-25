@@ -45,8 +45,17 @@ AppAsset::register($this);
         <div class="t_min header">
             <div class="t_le">欢迎光临趣淘学<b>北京<a href="#">[切换城市]</a></b></div>
             <div class="t_ri">
-                <span><a href="<?= Url::to(['user/register']); ?>">注册 |</a> <a href="denglu.html" class="a1">登陆</a></span>
-                <span class="mtx"><a href="<?= Url::to(['user/index']); ?>">我的趣淘学</a></span>
+			 <?php
+							$session = \Yii::$app->session;
+							$session->open();
+							if(!$session->get('user_id')){
+				?>
+				
+                <span><a href="<?= Url::to(['user/register']); ?>">注册 |</a> <a href="<?= Url::to(['user/login']); ?>" class="a1">登陆</a></span>
+				<?php }else{ ?>
+                <span class="mtx"><a href="<?= Url::to(['user/index']); ?>">我的趣淘学</a> <a href="<?= Url::to(['user/outlogin']); ?>" class="a1">退出登陆</a></span>
+				<?php } ?>
+
                 <span> <a href="#">帮助中心</a></span>
                 <span class="app"><a href="#">APP</a></span>
             </div>

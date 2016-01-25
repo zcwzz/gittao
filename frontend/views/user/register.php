@@ -44,7 +44,7 @@ use yii\captcha\Captcha;
 			<ul>	
 				<li>
 				
-					<?= $form->field($model, 'user_phone',['template'=>'<div class="form-group field-user-user_phone required">&nbsp;&nbsp;<label style="color: red;">*</label>&nbsp;&nbsp;&nbsp;{label}{input}<div style="margin-left:100px;"><font color="red">{error}</font></div></div>'])->textInput(['maxlength' => 11, 'class' =>'in1 validate[required,custom[mobile]]', 'placeholder'=>'请输入手机号']) ?>
+					<?= $form->field($model, 'user_phone',['template'=>'<div class="form-group field-user-user_phone required">&nbsp;&nbsp;<label style="color: red;">*</label>&nbsp;&nbsp;&nbsp;{label}{input}<div style="margin-left:100px;"><font color="red" id="phone">{error}</font></div></div>'])->textInput(['maxlength' => 11, 'class' =>'in1 validate[required,custom[mobile]]', 'placeholder'=>'请输入手机号']) ?>
 				</li>
 					<!--用户类型-->
 		
