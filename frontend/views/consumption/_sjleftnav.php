@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 ?>
-    <div class="mt_le t_le" id="leftmenus">
+    <div class="mt_le t_le"  >
             <a href="" atr="home"><h1>商家中心</h1></a>
             <ul>
                 <h2>我的订单</h2><!-- class="co"       现在是哪个页面就放哪个页面的a标签里-->

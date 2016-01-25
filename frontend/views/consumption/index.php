@@ -17,7 +17,6 @@ $this->title = '我的消费';
 			<span id="" class="colorff5400">
 				账户信息
 			</span>
-			<p class="dis floatright">申请成为消费商家</p>
 		</div>
 		
 		<div class="backf6f3ee  marleft10 bor1 martop20 height120">
