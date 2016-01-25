@@ -139,7 +139,7 @@ class UserController extends Controller
 			$transaction->commit(); //提交事务会真正的执行数据库操作
 			$session = \Yii::$app->session;
 			$session->open();
-			$session->set('user_id',$res['user_id']);
+			$session->set('user_id',$user_id);
 			echo "<script>alert('注册成功！！请稍后再试');location.href='index.php?r=user/login'</script>";
 				die;
 		} catch (Exception $e) {
