@@ -78,12 +78,7 @@ use yii\widgets\LinkPager;
                 </div> 
             </div>
         </div>
-    </div>
-<style type="text/css">
-		p{cursor:pointer}
-		
-	</style>
-
+    </div> 
 <script>
 	$(function (){
 		$("#search_all").click(function (){
