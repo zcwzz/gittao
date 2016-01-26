@@ -25,10 +25,10 @@ use yii\helpers\Url;
 <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>咖啡豆金融管理后台</title>
+<title>武壮韩星</title>
 </head>
 <body>
-<header class="Hui-header cl"> <a class="Hui-logo l" href="/">H-ui.admin</a> <a class="Hui-logo-m l" href="/" title="H-ui.admin">咖啡豆金融管理后台</a> <span class="Hui-subtitle l">V1.0</span>
+<header class="Hui-header cl"> <a class="Hui-logo l" href="/">H-ui.admin</a> <a class="Hui-logo-m l" href="/" title="H-ui.admin">武壮韩星后台</a> <span class="Hui-subtitle l">V1.0</span>
 	<nav class="mainnav cl" id="Hui-nav">
 	</nav>
 	<ul class="Hui-userbar">
@@ -113,6 +113,7 @@ use yii\helpers\Url;
 				<ul>
 					<li><a _href="<?= Url::to(['system/info']) ?>" href="javascript:void(0)">系统设置</a></li>
 					<li><a _href="<?= Url::to(['system/log']) ?>" href="javascript:void(0)">系统日志</a></li>
+					<li><a _href="<?= Url::to(['system/helpcenter']) ?>" href="javascript:void(0)">帮助中心</a></li>
 				</ul>
 			</dd>
 		</dl>

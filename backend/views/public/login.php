@@ -19,7 +19,7 @@
 <script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>咖啡豆项目管理后台</title>
+<title>武壮韩星项目管理后台</title>
 </head>
 <body>
 <input type="hidden" id="TenantId" name="TenantId" value="" />
@@ -60,7 +60,7 @@
     </form>
   </div>
 </div>
-<div class="footer">北京高阳明天科技</div>
+<div class="footer">武壮韩星</div>
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="js/H-ui.js"></script> 
 <script>

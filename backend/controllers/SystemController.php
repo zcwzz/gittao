@@ -22,4 +22,18 @@ class SystemController extends BaseController
     {
         return $this->render('log');
     }
+    /**
+     * 帮助中心
+     */
+    public function actionHelpcenter()
+    {
+        return $this->render('helpcenter');
+    }
+    /**
+     * add帮助中心
+     */
+    public function actionAddhelpcenter()
+    {
+        return $this->render('addhelpcenter');
+    }
 }
