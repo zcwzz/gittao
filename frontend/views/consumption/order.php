@@ -88,7 +88,7 @@ use yii\widgets\LinkPager;
 			var key = $("#key").val();
 			var keyword = $("#keyword").val(); 
 			$.ajax({
-			   type: "POST",
+			   type: "GET",
 			   url: "index.php?r=consumption/search_order",
 			   data: "key="+key+"&keyword="+keyword,
 			   success: function(msg){
@@ -98,6 +98,20 @@ use yii\widgets\LinkPager;
 			});
 		})
 	})
+    $(document).on('click','.pagination a',function(){
+        var page = $(this).html()
+        $.ajax({
+            type : "get",
+            url : "<?php echo \Yii::$app->urlManager->createUrl('consumption/search_order')?>",
+            //dataType:'json',
+            data : 'page='+page,
+            success: function(msg){
+                $("#lists").html(msg)
+            }
+        });
+        return false;
+    })
+
     $(".pagination li").last().find("a").addClass("current");
     $(".pagination").find("li span").addClass("disabled");
     $(".pagination").find("li a").addClass("disabled");

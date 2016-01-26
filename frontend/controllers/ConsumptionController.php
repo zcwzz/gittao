@@ -20,7 +20,9 @@ class ConsumptionController extends Controller
     public function actionIndex()
     {
 		$GoodsOrder = new GoodsOrder();
-		$user_id=1;
+        $session=\Yii::$app->session;
+        $session->open();
+        $user_id=$session->get('user_id');
 		$goodsorderlist = $GoodsOrder->goodsorderlist($user_id);
 		//print_r($goodsorderlist);die;
 		return $this->render("index",['goodsorderlist'=>$goodsorderlist]);
@@ -29,7 +31,9 @@ class ConsumptionController extends Controller
     public function actionOrder()
     {
 		$GoodsOrder = new GoodsOrder();
-		$user_id=1;
+        $session=\Yii::$app->session;
+        $session->open();
+		$user_id=$session->get('user_id');
 		$where = ['user_id'=>$user_id];
 		$goodsorderlist = $GoodsOrder->goods_order_search($where); 
 		$pagination = $goodsorderlist['pagination'];
@@ -41,11 +45,11 @@ class ConsumptionController extends Controller
     } 
 	//搜索订单
 	public function actionSearch_order(){ 
-		$key = isset($_POST['key'])?$_POST['key']:'';
-		$keyword = isset($_POST['keyword'])?$_POST['keyword']:'';  
+		$key = isset($_GET['key'])?$_GET['key']:'';
+		$keyword = isset($_GET['keyword'])?$_GET['keyword']:'';
 		$session=\Yii::$app->session;
-        $session->open(); 
-		if(!isset($_GET['pagination']))
+        $session->open();
+		if(!isset($_GET['page']))
         {
             $session->set('key',$key);
 			$session->set('keyword',$keyword); 
@@ -59,7 +63,9 @@ class ConsumptionController extends Controller
         $start = strtotime(date('Y-m-d', mktime(0,0,0,date('m')-1,1,date('Y')))); //上个月的开始日期
         $end = strtotime(date('Y-m-d', mktime(0,0,0,date('m')-1,$t,date('Y')))); //上个月的结束日期
         $where=['and',(1)];
-        $user_id=1;//user_id   session
+        $session=\Yii::$app->session;
+        $session->open();
+        $user_id=$session->get('user_id');
         $where[] = ['user_id'=>$user_id];
         if($key2 != ''){
 			if($key2 == 1){
@@ -85,7 +91,9 @@ class ConsumptionController extends Controller
     //消费明细
     public function actionPayment(){
 		$Payment = new Payment();
-		$user_id=1;//user_id   session
+        $session=\Yii::$app->session;
+        $session->open();
+        $user_id=$session->get('user_id');
 		$where1 = ['mer_id'=>$user_id];
 		$where = ['user_id'=>$user_id];
         $balance = $Payment->balance($where1);

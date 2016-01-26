@@ -11,28 +11,12 @@ $this->title = '商家消费明细';
 
     <div class="t_min t_tit">当前位置：<a href="http://www.qutaoxue.net/">首页</a> &gt; 我的门店</div>
     <!--我的趣淘学-->
-    <div class="t_min">
-    <!--    <div class="mt_le t_le" id="leftmenus">
-            <a href="" atr="home"><h1>商家中心</h1></a>
-            <ul>
-                <h2>我的订单</h2><!-- class="co"       现在是哪个页面就放哪个页面的a标签里
-                <li><a href="<?/*= Url::to(['consumption/order']); */?>" atr="order">我的订单</a></li>
-                <li><a class="co" href="<?/*= Url::to(['consumption/index']); */?>" atr="comment">预收明细</a></li>
-                <h2>我的兼职</h2>
-                <li><a href="<?/*= Url::to(['business/index']); */?>" atr="publish">发布兼职</a></li>
-                <li><a href="<?/*= Url::to(['business/lists']); */?>" atr="list">兼职列表</a></li>
-                <h2>企业设置</h2>
-                <li><a href="<?/*= Url::to(['meger/means']); */?>" atr="base">基本资料</a></li>
-                <li><a href="<?/*= Url::to(['meger/safety']); */?>" atr="safe">账户安全</a></li>
-                <li><a href="<?/*= Url::to(['meger/balance']); */?>" atr="account">账户余额</a></li>
-            </ul>
-        </div>-->
-        <?php echo $this->render('_sjleftnav');?>
-        <div class="mt_ri t_ri">
-            <div class="mt_rli">
-                <div class="right">
-                    <div class="tittle">
-                        <span>账户余额</span>
+<div class="t_min">
+    <?php echo $this->render('_sjleftnav');?>
+    <div class="mt_ri t_ri">
+        <div class="mt_rli">
+                    <div class="studentdetailtop bor0">
+                        <span id="" class="colorff5400"> 账户余额 </span>
                     </div>
                     <div class="budget" id="bussinfo">
                         <span>账户余额：<e id="advancelimit"><?php echo $balance['mer_money'];?></e></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -53,9 +37,7 @@ $this->title = '商家消费明细';
                                 <th class="left">交易金额</th>
                                 <th class="left">支付方式</th>
                                 <th class="left">备注</th>
-
                             </tr>
-							
                         </thead>
 						<?php foreach ($payment as $ord){?>
 							<tr> 
