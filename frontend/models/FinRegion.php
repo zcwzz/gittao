@@ -34,11 +34,23 @@ class FinRegion extends \yii\db\ActiveRecord
         ];
     }
     /*
-    *查询
-    */
+    *查询省
+    */   
     public function selemean(){
-        $res = FinRegion::find()->all();
-        return $res;
+        $model = new FinRegion();
+        $arr = $model->find()->select(['region_id','region_name'])->where(["region_type" =>1])->asarray()->all();
+        return $arr;
+    }
+    /*
+    *查询城市
+    */
+    public function getCity($province_id){
+         return $this->find()->select(['region_id','region_name'])->where(['parent_id'=>$province_id])->asarray()->all();
+    }
+
+    //查询区、县
+    public function getArea($city_id){
+        return $this->find()->select(['region_id','region_name'])->where(['parent_id'=>$city_id])->asarray()->all();
     }
 
     /**

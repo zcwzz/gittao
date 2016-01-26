@@ -87,12 +87,19 @@ AppAsset::register($this);
 				</style>
                 <div id="city_link" class="city_link" style="position:absolute; left:10px; top:30px;display:none;">
                     <div class="city_show">
-                        <span style="float:right" class="f_red f_r" href="javascript:;" title="关闭窗口" onclick="document.getElementById('city_nav').className='city_nav';document.getElementById('city_link').className='city_link';document.getElementById('city_link').style='z-index:-1;position:absolute; left:10px; top:30px;';return !1;">[关闭]</span>
+                        <span style="float:right" class="f_red f_r" href="javascript:;" title="关闭窗口" onclick="document.getElementById('city_nav').className='city_nav';document.getElementById('city_link').className='city_link';document.getElementById('city_link').style='z-index:-1;position:absolute; left:10px; top:30px;display:none;';return !1;">[关闭]</span>
 
                     </div>
                     <div id="listCity">
-                        <a class="city_links" href="#" onclick="document.getElementById('city_link').style='z-index:-1;position:absolute; left:10px; top:30px;';return !1;">北京</a>
-                        <a class="city_links" href="#" onclick="document.getElementById('city_link').style='z-index:-1;position:absolute; left:10px; top:30px;';return !1;">南京</a>
+					<?php 
+						$cache = \Yii::$app->cache;
+						$city=$cache->get('cit');
+						foreach($city as $v){
+					?>
+					<a class="city_links" href="#" onclick="document.getElementById('city_link').style='z-index:-1;position:absolute; left:10px; top:30px;display:none;';return !1;" city='<?php echo $v['region_id'];?>' ><?php echo $v['region_name'];?></a>
+					<?php }?>
+                        <!-- <a class="city_links" href="#" onclick="document.getElementById('city_link').style='z-index:-1;position:absolute; left:10px; top:30px;';return !1;">北京</a>
+                        <a class="city_links" href="#" onclick="document.getElementById('city_link').style='z-index:-1;position:absolute; left:10px; top:30px;';return !1;">南京</a> -->
                     </div>
 					<script type="text/javascript">
 					$(function (){
