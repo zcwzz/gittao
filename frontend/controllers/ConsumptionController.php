@@ -10,7 +10,7 @@ use yii\filters\AccessControl;
 use frontend\models\GoodsOrder;
 use frontend\models\Payment;
 /**
- * 我的消费
+ * 我的消费哇飒飒大师的啊啊啊啊啊
  * strong
  */
 class ConsumptionController extends Controller
