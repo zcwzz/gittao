@@ -48,16 +48,9 @@ use yii\captcha\Captcha;
 						
 					</li>
 			      <li>
-<<<<<<< Updated upstream
+
 			      <?= $form->field($model, 'businessType',['template'=>'<span class="wida"><label style="color: red;">*</label>{label}</span><span class="shangjiangCategroy">{input}</span><font color="red">{error}</font>'])->checkboxList(['2'=>'兼职商家','3'=>'消费商家']) ?></span>
-=======
-				  <span class="wida">
-							<label style="color: red;">*</label>
-							&nbsp;&nbsp;类型：
-						</span>
-			      <span class="shangjiangCategroy">
-			      <?= $form->field($model, 'businessType',['template'=>'<div><div>{input}</span></div> <div style="margin-left:100px;"><font color="red">{error}</font></div></div>'])->checkboxList(['2'=>'兼职商家','3'=>'消费商家']) ?></span>
->>>>>>> Stashed changes
+
 			     </li>
 			
 					<li>
