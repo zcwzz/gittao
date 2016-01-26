@@ -53,7 +53,7 @@ AppAsset::register($this);
 				
                 <span><a href="<?= Url::to(['user/register']); ?>">注册 |</a> <a href="<?= Url::to(['user/login']); ?>" class="a1">登陆</a></span>
 				<?php }else{ ?>
-                <span class="mtx"><a href="<?= Url::to(['user/index']); ?>">我的趣淘学</a> <a href="<?= Url::to(['user/outlogin']); ?>" class="a1">退出登陆</a></span>
+                <span class="mtx"><a href="<?= Url::to(['consumption/index']); ?>">我的趣淘学</a> <a href="<?= Url::to(['user/outlogin']); ?>" class="a1">退出登陆</a></span>
 				<?php } ?>
 
 
