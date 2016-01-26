@@ -7,19 +7,22 @@ $params = array_merge(
 );
 
 return [
-'bootstrap' => ['gii'],
-	 'modules' => [
-		 'gii' => ['class' => 'yii\gii\Module'],
-	],
     'id' => 'app-backend',
-    'basePath' => dirname(__DIR__), 
-    
+    'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
-    'components' => [
-	'request' => [
-            'enableCookieValidation' => true,
-            'cookieValidationKey' => '123123',
-        ],
+    'bootstrap' => ['log'],
+    'components' => [ 
+		'db' => [
+			'class' => 'yii\db\Connection',
+			'dsn' => 'mysql:host=127.0.0.1;dbname=final',
+			'username' => 'root',
+			'password' => 'root',
+			'charset' => 'utf8',
+		],
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+
+        ], 
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -35,6 +38,12 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+    ],
+	'modules' => [
+        'debug' => [
+            'class' => 'yii\debug\Module',
+            'allowedIPs' => ['1.2.3.4', '127.0.0.1', '*'],
         ],
     ],
     'params' => $params,
