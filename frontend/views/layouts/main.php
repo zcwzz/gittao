@@ -127,7 +127,7 @@ AppAsset::register($this);
 
 
                
-                <span> <a href="#">帮助中心</a></span>
+                <span> <a href="<?= Url::to(['help/index']); ?>">帮助中心</a></span>
                 <span class="app"><a href="#">APP</a></span>
             </div>
         </div>
