@@ -24,5 +24,12 @@ return [
             'allowedIPs' => ['1.2.3.4', '127.0.0.1', '*'],
         ],
     ],
+	'bootstrap' => ['debug'],
+    'modules' => [
+        'debug' => [
+            'class' => 'yii\debug\Module',
+            'allowedIPs' => ['1.2.3.4', '127.0.0.1', '*'],
+        ],
+    ],
 ];
 
