@@ -48,7 +48,9 @@ use yii\captcha\Captcha;
 						
 					</li>
 			      <li>
+
 			      <?= $form->field($model, 'businessType',['template'=>'<span class="wida"><label style="color: red;">*</label>{label}</span><span class="shangjiangCategroy">{input}</span><font color="red">{error}</font>'])->checkboxList(['2'=>'兼职商家','3'=>'消费商家']) ?></span>
+
 			     </li>
 			
 					<li>

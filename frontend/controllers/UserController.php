@@ -171,7 +171,7 @@ class UserController extends Controller
 			$session = \Yii::$app->session;
 			$session->open();
 			$session->set('user_id',$res['user_id']);
-			print_r($res);
+			//print_r($res);
 			echo "登录成功，session为 user_id=".$session->get('user_id');
 		}else
 		{
