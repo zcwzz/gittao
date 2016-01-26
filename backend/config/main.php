@@ -7,12 +7,19 @@ $params = array_merge(
 );
 
 return [
+'bootstrap' => ['gii'],
+	 'modules' => [
+		 'gii' => ['class' => 'yii\gii\Module'],
+	],
     'id' => 'app-backend',
-    'basePath' => dirname(__DIR__),
+    'basePath' => dirname(__DIR__), 
+    
     'controllerNamespace' => 'backend\controllers',
-    'bootstrap' => ['log'],
-    'modules' => [],
     'components' => [
+	'request' => [
+            'enableCookieValidation' => true,
+            'cookieValidationKey' => '123123',
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

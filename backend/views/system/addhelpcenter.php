@@ -30,13 +30,14 @@
                 <div class="row cl">
                     <label class="form-label col-2"><span class="c-red">*</span>网站名称：</label>
                     <div class="formControls col-10">
-                        <input type="text" id="website-title" placeholder="控制在25个字、50个字节以内" value="" class="input-text">asdasdasdasdsdfvvbdfgshdhgry
+                        <input style="width: 40%" type="text" id="website-title" placeholder="控制在25个字、50个字节以内" value="" class="input-text">
                     </div>
                 </div>
                 <div class="row cl">
                     <label class="form-label col-2"><span class="c-red">*</span>关键词：</label>
                     <div class="formControls col-10">
-                        <input type="text" id="website-Keywords" placeholder="5个左右,8汉字以内,用英文,隔开" value="" class="input-text">
+                        <select class="input-text" ><option>asdasd</option></select>
+
                     </div>
                 </div>
                 <div class="row cl">
