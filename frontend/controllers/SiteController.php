@@ -12,10 +12,11 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-
+use app\models\FinRegion;
 /**
  * Site controller
  */
+ ///header('contect-type:text/html;varchar=utf-8');
 class SiteController extends Controller
 {
     /**
@@ -72,6 +73,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+		//开启缓存
+		$cache = \Yii::$app->cache;        
+        $Region = new FinRegion;
+        $dependency = new \yii\caching\FileDependency(['fileName' => 'example.txt']);
+        $data=FinRegion::find()->where("region_type=2")->asArray()->all();
+		//print_r($data);die;
+		//json_encode($data,JSON_UNESCAPED_UNICODE)
+        $cache->set('cit',$data, 3600, $dependency);
+       // print_r($cache->get('cit'));        
         return $this->render('index');
     }
 
@@ -210,4 +220,10 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+	//轮播图
+	function actionBanner()
+	{
+
+	}
+	//安全保证
 }
