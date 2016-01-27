@@ -1,6 +1,5 @@
 <?php
 namespace frontend\controllers;
-
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -10,8 +9,11 @@ use yii\filters\AccessControl;
 //引用model
 use app\models\FinMerchantBase;
 use app\models\FinRegion;
+use frontend\models\FinUser;
 header("content-type:text/html;charset=utf8");
-
+/*
+*商家 韩利会
+*/
 class MegerController extends Controller{
 	/*
 	 * 我的企业兼职+消费企业首页
@@ -29,7 +31,7 @@ class MegerController extends Controller{
     /*
     *我的企业+限额申请
     */
-    public function actionLimit(){
+    public function actionQuota(){
     	return $this->render("limit");
     }
     /*
@@ -56,12 +58,9 @@ class MegerController extends Controller{
 		$mer_id = '1';
 		//获取登陆用户id
 		$userinfo = FinMerchantBase::find()->where(['mer_id'=>$mer_id])->one();
-
 		//查询登陆用户的信息
 		$info = FinMerchantBase::find()->where(['mer_id'=>$mer_id])->asarray()->one();	
-
 		//查询登陆用户的信息
-
 		$model =new FinMerchantBase;
 		$sele = new FinRegion;
 		$province = $sele->selemean();//省
@@ -75,31 +74,6 @@ class MegerController extends Controller{
 				$provinces[$k]['region_name'] = $v['region_name'];
 			}
 		}
-
-		//市
-		/*$city = $sele->getCity($userinfo->mer_province);
-		if(empty($city)){
-			$citys[0]['region_id'] = '0';
-			$citys[0]['region_name'] = '请选择';
-		}else{
-			foreach($city as $k=>$v){
-				$citys[$k]['region_id'] = $v['region_id'];
-				$citys[$k]['region_name'] = $v['region_name'];
-			}
-		}
-		
-		//		区/县
-		$area = $sele->getArea($userinfo->mer_city);
-		
-		if(empty($area)){
-			$areas[0]['region_id'] = '0';
-			$areas[0]['region_name'] = '请选择';
-		}else{
-			foreach($area as $k=>$v){
-				$areas[$k]['region_id'] = $v['region_id'];
-				$areas[$k]['region_name'] = $v['region_name'];
-			}
-		}*/
 		$areas = array();
 		$citys = array();
 		return $this->render("means",[
@@ -133,6 +107,25 @@ class MegerController extends Controller{
 		}else{
 			echo "添加失败！";
 		}
+	}
+	/*
+	*修改密码
+	*/
+	public function actionPassword(){
+		$model = new FinUser;
+		return $this->render("password",['model'=>$model]);
+		// return $this->render("password");
+	}
+	/*
+	*修改密码
+	*/
+	public function actionUpdpwd(){
+		$data = yii::$app->request->post();
+		$user_pwd = $data['FinUser']['user_pwd'];
+		$model = new FinUser;
+		$arr = $model->Userupdpwd($user_pwd);
+
+		print_r($arr);
 	}
 
 }

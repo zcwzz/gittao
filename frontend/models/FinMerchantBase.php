@@ -60,6 +60,7 @@ class FinMerchantBase extends \yii\db\ActiveRecord
             [['mer_introduce'], 'string'],
             [['mer_name', 'mer_contact', 'mer_position'], 'string', 'max' => 30],
             [['mer_phone', 'mer_conphone'], 'string', 'max' => 11],
+            [['mer_name','mer_contact','mer_conphone','mer_position','mer_address','mer_introduce','mer_positive'],'required','message'=>'此项不能为空'],
             [['mer_paypassword'], 'string', 'max' => 32],
             [['mer_address'], 'string', 'max' => 90],
             [['mer_logo', 'mer_license', 'mer_registration', 'mer_ allow', 'mer_positive', 'mer_reverse', 'mer_image1', 'mer_image2', 'mer_image3'], 'string', 'max' => 255]
@@ -97,9 +98,9 @@ class FinMerchantBase extends \yii\db\ActiveRecord
             'mer_conphone' => '联系电话',
             'mer_position' => '职位',
             'mer_level' => 'Mer Level',
-            'mer_province' => '',
-            'mer_city' => '',
-            'mer_area' => '',
+            'mer_province' => '',//省
+            'mer_city' => '',//市
+            'mer_area' => '',//区 
             'mer_address' => '企业地址',
             'mer_money' => 'Mer Money',
             'mer_limimoney' => 'Mer Limimoney',
@@ -109,7 +110,7 @@ class FinMerchantBase extends \yii\db\ActiveRecord
             'mer_license' => 'Mer License',
             'mer_registration' => 'Mer Registration',
             'mer_ allow' => 'Mer  Allow',
-            'mer_positive' => 'Mer Positive',
+            'mer_positive' => '',//上传身份证
             'mer_reverse' => 'Mer Reverse',
             'mer_image1' => 'Mer Image1',
             'mer_image2' => 'Mer Image2',

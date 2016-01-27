@@ -26,6 +26,7 @@ class FinUser extends \yii\db\ActiveRecord
 	public $verifyCode;
 	public $merchantname;//公司名称
 	public $businessType;//公司类别
+    public $user_pwd;
     public static function tableName()
     {
         return 'fin_user';
@@ -37,7 +38,7 @@ class FinUser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['smsValCode','businessType','merchantname','verifyCode','isPassword', 'user_phone', 'user_password' ], 'required','message'=>'当前项不能为空'],
+            [['smsValCode','businessType','merchantname','user_pwd','verifyCode','isPassword', 'user_phone', 'user_password' ], 'required','message'=>'此处不能为空'],
             [['user_id', 'user_type', 'user_addtime', 'user_lastlogin', 'user_status'], 'integer'],
             [['user_phone'], 'string', 'max' => 11],
             [['user_password'], 'string', 'max' => 32],
@@ -47,6 +48,12 @@ class FinUser extends \yii\db\ActiveRecord
 			//['verifyCode', 'required']
             [['verifyCode'], 'captcha','captchaAction'=>'site/captcha','message'=>"验证码错误"]
         ];
+    }
+    /*
+    *修改密码
+    */
+    public function Userupdpwd($user_pwd){
+         return $this->find()->select(['user_password','user_phone'])->where(['user_password'=>$user_pwd])->asarray()->all();
     }
 
     /**
@@ -68,6 +75,7 @@ class FinUser extends \yii\db\ActiveRecord
 			'verifyCode'=>'验证码',
 			'merchantname'=>'公司名称',
 			'businessType'=>'类别    ：',
+            'user_pwd' =>'输入旧密码',
 			];
     }
 }
