@@ -10,19 +10,8 @@ $this->title = '我的消费';
 <div class="t_min t_tit">当前位置：<a href="#">首页</a> > 我的消费</div>
 <!--我的消费-->
 <div class="t_min">
-<div class="mt_le t_le">
-<h1>我的门店</h1>
-<ul>
-<li><a href="#" class="co">我的订单</a></li>
-<li><a href="#">我的兼职</a></li>
-<li><a href="#">我的评论</a></li>
-<h2>个人设置</h2>
-<li><a href="#">基本资料</a></li>
-<li><a href="#">账户安全</a></li>
-<li> <a href="#">账户余额</a></li>
-</ul>
-</div>
-<div class="mt_ri t_ri"> 
+    <?php echo $this->render('_sjleftnav');?>
+<div class="mt_ri t_ri">
 <div class="mt_rli">
 <div class="studentdetailtop bor0">
 			<span id="" class="colorff5400">

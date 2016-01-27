@@ -46,15 +46,7 @@
 			
 			<div class="clear"></div></div>
         </div>
-        <div class="mt_le t_le" id="leftmenus">  <a href="http://www.qutaoxue.net/merchant/merchantIndex" atr="home"><h1>我的门店  </h1></a> 
-		<ul>     
-		<li><a href="http://www.qutaoxue.net/merchant/merchantOrder" atr="order">我的订单</a></li> 
-		<li><a href="http://www.qutaoxue.net/merchant/merchantComment" atr="comment">我的评论</a></li>     <h2>我的兼职</h2>     <li><a class="co" href="index.php?r=business" atr="publish">发布兼职</a></li> 
-		<li><a href="index.php?r=business/lists" atr="list">兼职列表</a></li>     <h2>企业设置</h2>     <li><a href="http://www.qutaoxue.net/merchant/merchantInfo" atr="base">基本资料</a></li> 
-		<li><a href="http://www.qutaoxue.net/merchant/merchantSafe" atr="safe">账户安全</a></li>  
-		<li> <a href="http://www.qutaoxue.net/merchant/merchantBalance" atr="account">账户余额</a></li> 
-		</ul>
-		</div>
+        <?php echo $this->render('_sjleftnav');?>
         <div class="mt_ri t_ri">
             <div class="mt_rli">
                 <div class="right">
@@ -93,8 +85,7 @@
 			</span>
 			<span id=" ">
 				<label class="floleft margleft5">上传图片：</label>
-				<img src="/public/images/logo_002.png" id="myselfpic1" class="margleft10" name="introPic" width="80px">
-					只能上传jpg、jpeg、png类型的图片，大小不能超过2M
+				
 					    <?= $form->field($model, 'file')->fileInput() ?>
 			</span>
 			<span id="">
@@ -103,7 +94,7 @@
 			<select id="payUnit" name="payUnit">
 			
 		
-			<option selected="selected" value="1">元/天</option><option value="2">元/小时</option><option value="3">元/单</option><option value="4">元/月</option><option value="5">元/周</option><option value="6">元/次</option><option value="7">元/个</option><option value="8">面议</option></select>
+			<option selected="selected" value="元/天">元/天</option><option value="元/小时">元/小时</option><option value="元/单">元/单</option><option value="元/月">元/月</option><option value="元/周">元/周</option><option value="元/次">元/次</option><option value="元/个">元/个</option><option value="面议">面议</option></select>
 			</span>
 			<span id="">
 				<m>*</m><label>结算方式：</label>

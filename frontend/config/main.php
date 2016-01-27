@@ -16,7 +16,7 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
-	'request' => [
+		'request' => [
             'enableCookieValidation' => true,
             'cookieValidationKey' => '123123',
         ],
@@ -40,6 +40,8 @@ return [
             'enableCookieValidation' => true,
             'cookieValidationKey' => 'adwdwdwadwawadwawadda',
         ]
+		
+
     ],
     'params' => $params,
 ];

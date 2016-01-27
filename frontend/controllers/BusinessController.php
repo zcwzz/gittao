@@ -10,7 +10,11 @@ use yii\filters\AccessControl;
 use frontend\models\Jobdetails;
 use frontend\models\Upload;
 use frontend\models\Parttype;
+use frontend\models\Partlist;
+use frontend\models\Parttimeorder;
+use frontend\models\Settlement;
 use yii\web\UploadedFile;
+
 /**
  * 安全保障
  */
@@ -62,7 +66,7 @@ class BusinessController extends Controller
 				$address  = Yii::$app->request->post('address');
 				$job -> working_place=$province.'/'.$city.'/'.$area.'/'.$address;
 				$job -> add_time  = time();
-				$job -> job_status = 1;
+				$job -> job_status = 0;
 				$job -> lng = 1;
 				$job -> lat = 1;
 				$arr=$job->save();
@@ -77,10 +81,141 @@ class BusinessController extends Controller
 	public function actionLists(){
 			 $job = new Jobdetails();
 			  $data=$job->selects();
-			 
+
 		return $this->render('lists',$data);
 	}
+	//兼职详情
+	public function actionStulists($id){
+		 $obj = new Partlist();
+		 $data=$obj->select($id);
+		 return $this->render('stulists',$data);
+	}
+	//审核
+	public function actionExamine(){
 	
+		if(empty(Yii::$app->request->get('id'))){
+			Yii::$app->session->open();
+			$id=Yii::$app->session->get('id');
+	
+		}else{
+			$id=Yii::$app->request->get('id');
+			Yii::$app->session->open();
+			Yii::$app->session->set('id',$id);
+		}
+
+		 $job = new Jobdetails();
+		 $data=$job->examine($id);
+		return $this->render('examine',$data);
+	}
+	//订单 $user_id登陆用户的id
+	public function actionOrder($id){	
+		$job = new Parttimeorder();
+		$user_id=1;
+		$time=time();
+		$order_sn=mt_rand(100,999).$time;
+		$job -> order_sn=$order_sn;
+			
+		$job -> position_id= $id;
+		$job -> order_addtime=$time;
+		$job -> order_status=0;
+		$job -> user_id= $user_id;
+		$arr=$job->save();
+		if($arr){
+			$data=$job->select();
+			 return $this->render('settlement',$data);
+		}else{
+			echo '2';
+		}
+	}
+	//单个结算
+	public function actionSet($id,$aid){
+	
+		$job = new Parttimeorder();
+		$user_id=1;
+		$time=time();
+		$order_sn=mt_rand(100,999).$time;
+		$job -> order_sn=$order_sn;
+			
+		$job -> position_id= $id;
+		$job -> order_addtime=$time;
+		$job -> order_status=0;
+		$job -> user_id= $user_id;
+		$arr=$job->save();
+		if($arr){
+			$data=$job->selects($aid);
+			 return $this->render('settlement',$data);
+		}else{
+			echo '2';
+		}
+	}
+	//报名人员
+	public function actionBao(){
+		if(empty(Yii::$app->request->get('id'))){
+			Yii::$app->session->open();
+			$id=Yii::$app->session->get('id');
+	
+		}else{
+			$id=Yii::$app->request->get('id');
+			Yii::$app->session->open();
+			Yii::$app->session->set('id',$id);
+		}
+		 $obj = new Partlist();
+		 $data=$obj->sele($id);
+	
+		 return $this->render('exam',$data);
+	}
+	//通过人员
+	public function actionTong(){
+		if(empty(Yii::$app->request->get('id'))){
+			Yii::$app->session->open();
+			$id=Yii::$app->session->get('id');
+	
+		}else{
+			$id=Yii::$app->request->get('id');
+			Yii::$app->session->open();
+			Yii::$app->session->set('id',$id);
+		}
+		 $obj = new Partlist();
+		 $data=$obj->sel($id);
+	
+		 return $this->render('exam',$data);
+	}
+	//拒绝人员
+	public function actionJu(){
+		if(empty(Yii::$app->request->get('id'))){
+			Yii::$app->session->open();
+			$id=Yii::$app->session->get('id');
+	
+		}else{
+			$id=Yii::$app->request->get('id');
+			Yii::$app->session->open();
+			Yii::$app->session->set('id',$id);
+		}
+		 $obj = new Partlist();
+		 $data=$obj->se($id);
+	
+		 return $this->render('exam',$data);
+	}
+	//审核通过
+	public function actionQuetong(){
+		Yii::$app->session->open();
+		$aid=Yii::$app->session->get('id');
+
+		$request = \YII::$app->request;
+		$id = $request->post('id');
+		$qid = rtrim($id, ','); 
+
+		/*$arr = explode(",",$id);
+		array_pop($arr); 
+		print_r($arr);*/
+		$m=new Partlist;
+		$result=$m->delques($qid,$aid);
+
+		if($result){
+			echo 1;
+		}
+		//var_dump($result);
+	}
 
 
 }
