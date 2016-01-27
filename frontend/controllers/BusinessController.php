@@ -37,7 +37,8 @@ class BusinessController extends Controller
 				
 				$model->file->saveAs('uploads/'. $model->file->baseName . '.' . $model->file->extension);
 				$img='uploads/'. $model->file->baseName . '.' . $model->file->extension;
-		
+			Yii::$app->session->open();
+			$user_id=Yii::$app->session->get('user_id');
 				$job -> merchants_id  = 1;
 				$job -> job_name  = Yii::$app->request->post('name');
 				$job -> job_type  = Yii::$app->request->post('workType');
