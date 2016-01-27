@@ -73,7 +73,7 @@ use yii\widgets\LinkPager;
 							<td><?php echo $v['stu_professional'] ?></td>
 							<td>
 							<?php if($v['part_status']!=1){ ?>
-							<a href="index.php?r=business/set&id=<?php echo $v['job_id'] ?>&aid=<?php echo $v['user_id'] ?>">结算</a></td>
+							<a href="set?id=<?php echo $v['job_id'] ?>&aid=<?php echo $v['user_id'] ?>">结算</a></td>
 							<?php }else{ ?>
 								已结算
 							<?php } ?>
@@ -81,7 +81,7 @@ use yii\widgets\LinkPager;
 					<?php } ?>
 					</tbody>
                 </table>
-				<a href="index.php?r=business/order&id=<?php echo $v['job_id'] ?>"><input type="button" value="批量结算"></a>
+				<a href="order?id=<?php echo $v['job_id'] ?>"><input type="button" value="批量结算"></a>
 				<input type="button" value="批量结束" onclick="">
                 <script type="text/template" id="parttimedateTemplate">
                   

@@ -28,7 +28,6 @@ class BusinessController extends Controller
 		 $job = new Jobdetails();
 		 $part = new Parttype();
 		 $data=$part->select();
-
         if (Yii::$app->request->isPost) {
 
 			$model->file = UploadedFile::getInstance($model,'file');
@@ -37,9 +36,11 @@ class BusinessController extends Controller
 				
 				$model->file->saveAs('uploads/'. $model->file->baseName . '.' . $model->file->extension);
 				$img='uploads/'. $model->file->baseName . '.' . $model->file->extension;
-			Yii::$app->session->open();
-			$user_id=Yii::$app->session->get('user_id');
-				$job -> merchants_id  = 1;
+
+				Yii::$app->session->open();
+				$user_id=Yii::$app->session->get('user_id');
+
+				$job -> merchants_id  = $user_id;
 				$job -> job_name  = Yii::$app->request->post('name');
 				$job -> job_type  = Yii::$app->request->post('workType');
 				$job -> job_people  = Yii::$app->request->post('total');
@@ -81,7 +82,9 @@ class BusinessController extends Controller
 	//兼职列表
 	public function actionLists(){
 			 $job = new Jobdetails();
-			  $data=$job->selects();
+			Yii::$app->session->open();
+			$user_id=Yii::$app->session->get('user_id');
+			  $data=$job->selects($user_id);
 
 		return $this->render('lists',$data);
 	}
@@ -111,7 +114,9 @@ class BusinessController extends Controller
 	//订单 $user_id登陆用户的id
 	public function actionOrder($id){	
 		$job = new Parttimeorder();
-		$user_id=1;
+
+		Yii::$app->session->open();
+		$user_id=Yii::$app->session->get('user_id');
 		$time=time();
 		$order_sn=mt_rand(100,999).$time;
 		$job -> order_sn=$order_sn;

@@ -8,13 +8,14 @@ class Jobdetails extends \yii\db\ActiveRecord{
 	public static function tableName(){
 		return '{{%fin_job_details}}';
 	}
-	public function selects(){
+	public function selects($user_id){
 		$pagination = new Pagination([
             'defaultPageSize' => 2,
             'totalCount' => $this->find()
 				->select('*')
 				->from('fin_job_details')
 				->join('inner join','fin_part_type','job_type=part_id')
+				->where(['merchants_id'=>$user_id])
 				->count(),
         ]);
 	
@@ -22,7 +23,7 @@ class Jobdetails extends \yii\db\ActiveRecord{
 				->select('*')
 				->from('fin_job_details')
 				->join('inner join','fin_part_type','job_type=part_id')
-			
+				->where(['merchants_id'=>$user_id])
 				->offset($pagination->offset)
 				->asarray()->orderBy('job_id asc')->limit($pagination->limit)->all();
 				

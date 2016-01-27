@@ -59,7 +59,7 @@
 	<!--	<form method="post" action="index.php?r=business/position" class="frm" enctype="multipart/form-data">-->
 	<?php $form = ActiveForm::begin([
 	'options' => ['enctype' => 'multipart/form-data','class' => 'frm'],
-	'action' => ['business/index'],
+	'action' => ['index'],
 	'method'=>'post',
 	]) ?>
 

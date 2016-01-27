@@ -37,7 +37,7 @@ use yii\widgets\LinkPager;
 
         <div class="mt_rli">
             <div class="right">
-      <a href="index.php?r=business/examine">兼职详情</a>&nbsp;&nbsp;&nbsp;<a href="index.php?r=business/bao">报名人员</a>&nbsp;&nbsp;&nbsp;<a href="index.php?r=business/tong">通过人员</a>&nbsp;&nbsp;&nbsp;<a href="index.php?r=business/ju">拒绝人员</a><hr/>
+      <a href="examine">兼职详情</a>&nbsp;&nbsp;&nbsp;<a href="bao">报名人员</a>&nbsp;&nbsp;&nbsp;<a href="tong">通过人员</a>&nbsp;&nbsp;&nbsp;<a href="ju">拒绝人员</a><hr/>
 <table>
 <?php foreach($job as $k=>$v){ ?>
 	<tr>

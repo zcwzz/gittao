@@ -79,9 +79,9 @@ use yii\widgets\LinkPager;
 							$id=$v['job_id'];
 							if($v['status']!=$v['job_people']){
 								if($v['job_people']>$v['counts']){
-									echo "<a href='index.php?r=business/examine&id=$id'>审核</a>";
+									echo "<a href='examine?id=$id'>审核</a>";
 								}else if($v['job_people']==$v['counts']){
-									echo "<a href='index.php?r=business/stulists&id=$id'>结算</a>";
+									echo "<a href='stulists?id=$id'>结算</a>";
 								}
 							}else{
 								echo "已结算";

@@ -37,7 +37,7 @@ use yii\widgets\LinkPager;
 
         <div class="mt_rli">
             <div class="right">
-      <a href="index.php?r=business/examine">兼职详情</a>&nbsp;&nbsp;&nbsp;<a href="index.php?r=business/bao">报名人员</a>&nbsp;&nbsp;&nbsp;<a href="index.php?r=business/tong">通过人员</a>&nbsp;&nbsp;&nbsp;<a href="index.php?r=business/ju">拒绝人员</a><hr/>
+      <a href="examine">兼职详情</a>&nbsp;&nbsp;&nbsp;<a href="bao">报名人员</a>&nbsp;&nbsp;&nbsp;<a href="tong">通过人员</a>&nbsp;&nbsp;&nbsp;<a href="ju">拒绝人员</a><hr/>
  <table class="date" cellpadding="0" cellspacing="0">
                     <thead style="background: #E5E5E4;">
                         <tr>
@@ -141,7 +141,7 @@ use yii\widgets\LinkPager;
     if(confirm("是否确定通过？")){
       $.ajax({
         type:"POST",
-        url:"index.php?r=business/quetong",
+        url:"quetong",
         data:"id="+str,
         success:function(msg){
 
