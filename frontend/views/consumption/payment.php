@@ -8,63 +8,15 @@ use yii\helpers\Html;
 $this->title = '商家消费明细';
 ?>
 
-<script src="/public/js/globl.js" type="text/javascript"></script>
-<script type="text/javascript" src="/public/js/jsbase.js"></script>
-<script type="text/javascript" src="/public/js/url.js"></script>
-<script type="text/javascript" src="/public/js/dataHandle.js"></script>
-<link rel="stylesheet" href="/public/css/jquery.css" type="text/css">
-<script type="text/javascript" src="/public/js/jquery.js"></script>
-
-
-
- 
-    <link rel="stylesheet" href="/public/css/shop.css">
-    <link rel="stylesheet" href="/public/css/sty.css">
-    <link rel="stylesheet" href="/public/css/comm.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-
-    <script type="text/javascript" src="/public/js/pagebase.js"></script> 
-     
-
 
     <div class="t_min t_tit">当前位置：<a href="http://www.qutaoxue.net/">首页</a> &gt; 我的门店</div>
     <!--我的趣淘学-->
-    <div class="t_min">
-        <div class="mt_ri_1">
-            <div class="mt_rt" id="topmenus">
-                <ul>
-                    <li class="img"> <img src="/public/images/us.jpg" height="100" width="100"></li>
-                    <li class="wi1">   <h1>strong</h1>   <p>手机号：13782519376</p></li>
-                    <li class="wi2">预收余额：0.00</li>
-                    <li class="wi3">   <a href="http://www.qutaoxue.net/merchant/merchantQuota"><span class="bg1">额度申请</span></a><a href="http://www.qutaoxue.net/merchant/merchantParttimeList"><span class="bg2">兼职结算</span></a> <a href="http://www.qutaoxue.net/merchant/merchantParttimeList"><span class="bg3">兼职审核</span></a></li>
-                </ul>
-                <div class="clear"></div>
-            </div>
-        </div>
-    <!--    <div class="mt_le t_le" id="leftmenus">
-            <a href="" atr="home"><h1>商家中心</h1></a>
-            <ul>
-                <h2>我的订单</h2><!-- class="co"       现在是哪个页面就放哪个页面的a标签里
-                <li><a href="<?/*= Url::to(['consumption/order']); */?>" atr="order">我的订单</a></li>
-                <li><a class="co" href="<?/*= Url::to(['consumption/index']); */?>" atr="comment">预收明细</a></li>
-                <h2>我的兼职</h2>
-                <li><a href="<?/*= Url::to(['business/index']); */?>" atr="publish">发布兼职</a></li>
-                <li><a href="<?/*= Url::to(['business/lists']); */?>" atr="list">兼职列表</a></li>
-                <h2>企业设置</h2>
-                <li><a href="<?/*= Url::to(['meger/means']); */?>" atr="base">基本资料</a></li>
-                <li><a href="<?/*= Url::to(['meger/safety']); */?>" atr="safe">账户安全</a></li>
-                <li><a href="<?/*= Url::to(['meger/balance']); */?>" atr="account">账户余额</a></li>
-            </ul>
-        </div>-->
-        <?php echo $this->render('_sjleftnav');?>
-
-        <div class="mt_ri t_ri">
-      
-            <div class="mt_rli">
-                <div class="right">
-                    <div class="tittle">
-                        <span>账户余额</span>
+<div class="t_min">
+    <?php echo $this->render('_sjleftnav');?>
+    <div class="mt_ri t_ri">
+        <div class="mt_rli">
+                    <div class="studentdetailtop bor0">
+                        <span id="" class="colorff5400"> 账户余额 </span>
                     </div>
                     <div class="budget" id="bussinfo">
                         <span>账户余额：<e id="advancelimit"><?php echo $balance['mer_money'];?></e></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -85,9 +37,7 @@ $this->title = '商家消费明细';
                                 <th class="left">交易金额</th>
                                 <th class="left">支付方式</th>
                                 <th class="left">备注</th>
-
                             </tr>
-							
                         </thead>
 						<?php foreach ($payment as $ord){?>
 							<tr> 
@@ -114,10 +64,8 @@ $this->title = '商家消费明细';
                             'nextPageLabel'=>'下一页',
                         ]);?>
                     </div>
+                    <br><br><br><br><br><br><br><br><br><br><br><br>
                 </div> 
             </div>
         </div>
-        </div>
-    <style type="text/css">
-		p{cursor:pointer}
-	</style>
+    </div>

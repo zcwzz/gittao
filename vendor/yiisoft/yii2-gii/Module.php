@@ -62,7 +62,11 @@ class Module extends \yii\base\Module implements BootstrapInterface
 
     public $allowedIPs = ['127.0.0.1', '::1','*','*'];
 
+<<<<<<< HEAD
 >>>>>>> 6ad33d3de1ac2ae426df28d5f02bb54e5d784c96
+=======
+
+>>>>>>> 987bdafae189cea02d67af0e561eb4dced43fe85
     /**
      * @var array|Generator[] a list of generator configurations or instances. The array keys
      * are the generator IDs (e.g. "crud"), and the array elements are the corresponding generator

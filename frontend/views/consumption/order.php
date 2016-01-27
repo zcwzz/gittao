@@ -2,45 +2,21 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
  /*
-	我的订单
+	我的订单asdasdasd市房管局四规范和时间
  */
  $this->title = '商家订单';
 ?>
-<script src="/public/js/globl.js" type="text/javascript"></script>
-<script type="text/javascript" src="/public/js/jsbase.js"></script>
-<script type="text/javascript" src="/public/js/url.js"></script>
-<script type="text/javascript" src="/public/js/dataHandle.js"></script>
-<link rel="stylesheet" href="/public/css/jquery.css" type="text/css">
-<script type="text/javascript" src="/public/js/jquery.js"></script>
-
-
-
- 
-    <link rel="stylesheet" href="/public/css/shop.css">
-    <link rel="stylesheet" href="/public/css/sty.css">
-    <link rel="stylesheet" href="/public/css/comm.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-
-    <script type="text/javascript" src="/public/js/pagebase.js"></script> 
-     
-
-
     <div class="t_min t_tit">当前位置：<a href="http://www.qutaoxue.net/">首页</a> &gt; 我的门店</div>
     <!--我的趣淘学-->
-    <div class="t_min">
-        <div class="mt_ri_1">
-
-            <div class="mt_rt" id="topmenus"><ul><li class="img"> <img src="/public/images/us.jpg" height="100" width="100"></li><li class="wi1">   <h1>strong</h1>   <p>手机号：13782519376</p></li><li class="wi2">预收余额：0.00</li><li class="wi3">   <a href="http://www.qutaoxue.net/merchant/merchantQuota"><span class="bg1">额度申请</span></a><a href="http://www.qutaoxue.net/merchant/merchantParttimeList"><span class="bg2">兼职结算</span></a> <a href="http://www.qutaoxue.net/merchant/merchantParttimeList"><span class="bg3">兼职审核</span></a></li></ul> <div class="clear"></div></div>
-        </div>
-        <?php echo $this->render('_sjleftnav');?>
-
-        <div class="mt_ri t_ri"> 
-            <div class="mt_rli">
-                <div class="right">
-                    <div class="tittle">
-                        <span>我的订单</span>
-                    </div>
+ <div class="t_min">
+     <?php echo $this->render('_sjleftnav');?>
+     <div class="mt_ri t_ri">
+         <div class="mt_rli">
+             <div class="studentdetailtop bor0">
+                <span id="" class="colorff5400">
+                    我的订单
+                </span>
+             </div>
                     <div class="budget" id="bussinfo">
 						根据：
                         <select id='key'>
@@ -92,22 +68,19 @@ use yii\widgets\LinkPager;
 							</tr>
 						<?php }?>
                     </table> 
-					<div class="tcdPageCode t_min">
-						<?php echo LinkPager::widget([
-							'pagination' => $pagination,
-							'prevPageLabel'=>'上一页',
-							'nextPageLabel'=>'下一页',
-						]);?>
-					</div>
+                        <div class="tcdPageCode t_min">
+                            <?php echo LinkPager::widget([
+                                'pagination' => $pagination,
+                                'prevPageLabel'=>'上一页',
+                                'nextPageLabel'=>'下一页',
+                            ]);?>
+                        </div>
 					</div>
                 </div> 
             </div>
         </div>
-        </div> 
-<style type="text/css">
-		p{cursor:pointer}
-		
-	</style>
+        <div class="clear"></div>
+    </div>
 
 <script>
 	$(function (){
@@ -115,7 +88,7 @@ use yii\widgets\LinkPager;
 			var key = $("#key").val();
 			var keyword = $("#keyword").val(); 
 			$.ajax({
-			   type: "POST",
+			   type: "GET",
 			   url: "index.php?r=consumption/search_order",
 			   data: "key="+key+"&keyword="+keyword,
 			   success: function(msg){
@@ -125,6 +98,20 @@ use yii\widgets\LinkPager;
 			});
 		})
 	})
+    $(document).on('click','.pagination a',function(){
+        var page = $(this).html()
+        $.ajax({
+            type : "get",
+            url : "<?php echo \Yii::$app->urlManager->createUrl('consumption/search_order')?>",
+            //dataType:'json',
+            data : 'page='+page,
+            success: function(msg){
+                $("#lists").html(msg)
+            }
+        });
+        return false;
+    })
+
     $(".pagination li").last().find("a").addClass("current");
     $(".pagination").find("li span").addClass("disabled");
     $(".pagination").find("li a").addClass("disabled");

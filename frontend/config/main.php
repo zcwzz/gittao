@@ -7,7 +7,7 @@ $params = array_merge(
 );
 
 return [
-'bootstrap' => ['gii'],
+	'bootstrap' => ['gii'],
 	 'modules' => [
 		 'gii' => ['class' => 'yii\gii\Module'],
 	],
@@ -16,6 +16,16 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+		'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => true,
+            'rules' => [
+                '<controller:\w+>/<id:\d+>'=>'<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+            ],
+        ],
+
 		'request' => [
             'enableCookieValidation' => true,
             'cookieValidationKey' => '123123',
@@ -44,4 +54,5 @@ return [
 
     ],
     'params' => $params,
+	
 ];

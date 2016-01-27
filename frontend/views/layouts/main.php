@@ -28,6 +28,7 @@ AppAsset::register($this);
 <link rel="stylesheet" type="text/css" href="/public/css/start.css" />
 <script type="text/javascript" src="/public/js/jquery-1.11.3.min.js"></script> 
 <script type="text/javascript" src="/public/js/pagebase.js"></script>
+<link rel="stylesheet" href="/public/css/jquery.tooltip.css" type="text/css"/>
 <style type="text/css">
         .tr:nth-of-type(even) {
              background: #F6F6F4;
@@ -43,11 +44,90 @@ AppAsset::register($this);
 <!--head-->
     <div class="head">
         <div class="t_min header">
-            <div class="t_le">欢迎光临趣淘学<b>北京<a href="#">[切换城市]</a></b></div>
+            <div class="t_le"><div class="t_le" id="city" style=" position:relative;">
+                <font class="f_l">欢迎光临趣淘学 </font>
+                <span class="f_l ml_10">测试版</span>
+                <b class="cityTitle f_l ml_10" id='city_name' atr="110001">北京</b>
+                <div class="city_swich f_l ml_10" style="float:right;">
+                    <span class="city_nav" id="city_nav" onclick="this.className='city_nav city_hover';document.getElementById('city_link').className='city_link city_hovers';document.getElementById('city_link').style='position:absolute; left:10px; top:30px;z-index:9999';">[切换城市]</span>
+                </div>
+				<style type="text/css">
+				.city_hovers {
+					display: block;
+				}
+				.city_link {
+					background: #ffffff none repeat scroll 0 0;
+					border: 2px solid #f25000;
+					width: 305px;
+				}
+				.city_show {
+					background: #ccc none repeat scroll 0 0;
+					cursor: pointer;
+					height: 18px;
+					line-height: 18px;
+					padding: 5px;
+				}
+				.city_show {
+					cursor: pointer;
+					line-height: 18px;
+				}
+
+				.city_links {
+					background: #f6f6f6 none repeat scroll 0 0;
+					display: inline-block;
+					font-size: 13px;
+					height: 30px;
+					line-height: 30px;
+					margin-bottom: 1px;
+					margin-right: 1px;
+					text-align: center;
+					vertical-align: top;
+					width: 60px;
+				}
+				</style>
+                <div id="city_link" class="city_link" style="position:absolute; left:10px; top:30px;display:none;">
+                    <div class="city_show">
+                        <span style="float:right" class="f_red f_r" href="javascript:;" title="关闭窗口" onclick="document.getElementById('city_nav').className='city_nav';document.getElementById('city_link').className='city_link';document.getElementById('city_link').style='z-index:-1;position:absolute; left:10px; top:30px;display:none;';return !1;">[关闭]</span>
+
+                    </div>
+                    <div id="listCity">
+					<?php 
+						$cache = \Yii::$app->cache;
+						$city=$cache->get('cit');
+						foreach($city as $v){
+					?>
+					<a class="city_links" href="#"  city='<?php echo $v['region_id'];?>' ><?php echo $v['region_name'];?></a>
+					<?php }?>
+                        <!-- <a class="city_links" href="#" onclick="document.getElementById('city_link').style='z-index:-1;position:absolute; left:10px; top:30px;';return !1;">北京</a>
+                        <a class="city_links" href="#" onclick="document.getElementById('city_link').style='z-index:-1;position:absolute; left:10px; top:30px;';return !1;">南京</a> -->
+                    </div>
+			<script type="text/javascript">
+			$(function (){
+				$(".city_links a").click(function(){
+					document.getElementById('city_link').style='z-index:-1;position:absolute; left:10px; top:30px;display:none;';
+					var cityname=$(this).html();
+					$("#city_name").html(cityname)
+				})
+			})
+			</script>
+                </div>
+            </div>
+			</div>
             <div class="t_ri">
-                <span><a href="<?= Url::to(['user/register']); ?>">注册 |</a> <a href="denglu.html" class="a1">登陆</a></span>
-                <span class="mtx"><a href="<?= Url::to(['user/index']); ?>">我的趣淘学</a></span>
-                <span> <a href="#">帮助中心</a></span>
+			 <?php
+							$session = \Yii::$app->session;
+							$session->open();
+							if(!$session->get('user_id')){
+				?>
+				
+                <span><a href="<?= Url::to(['user/register']); ?>">注册 |</a> <a href="<?= Url::to(['user/login']); ?>" class="a1">登陆</a></span>
+				<?php }else{ ?>
+                <span class="mtx"><a href="<?= Url::to(['consumption/index']); ?>">我的趣淘学</a> <a href="<?= Url::to(['user/outlogin']); ?>" class="a1">退出登陆</a></span>
+				<?php } ?>
+
+
+               
+                <span> <a href="<?= Url::to(['help/index']); ?>">帮助中心</a></span>
                 <span class="app"><a href="#">APP</a></span>
             </div>
         </div>
@@ -57,7 +137,7 @@ AppAsset::register($this);
     <div class="t_nav" style='background: #444444 none repeat scroll 0 0;'>
         <div class="t_navy"></div>
         <div class="t_navi t_min"> 
-            <div class="t_le"><a href="index.html" title="black"><img src="/public/images/logo.png" width="200" height="100" border="0" /></a></div>
+            <div class="t_le"><a href="index.html" title="black"><img src="/public/images/mlogo.png" width="200" height="100" border="0" /></a></div>
             <div class="t_le">
                 <ul>
                     <li class="menu bg"><a href="<?= Url::to(['site/index']); ?>">首&nbsp;&nbsp;页</a></li>
@@ -153,3 +233,10 @@ AppAsset::register($this);
         $(this).attr('class','menu bg');
     })
 </script>
+<script type='text/javascript' src="public/js/pagebase.js"></script>
+<script type='text/javascript'>
+$(function(){
+	  GLOBAL.pagebase.GetTop();
+      GLOBAL.pagebase.City();
+})</script>
+

@@ -93,7 +93,7 @@ y{margin-right: 34px;}
  div.next div.phone div {float: right;color:#3a82c4;font-weight: 600;font-size: 14px;position: relative;top:-50px;left:-112px;}
  /*2015.12.8
  *wzl123
- *ä¿®æ”¹left
+ *ĞŞ¸Äleft
  */
  div.next div.paypwd div {float: right;padding-right:px;width:100px;height: 30px;font-size: 12px;font-weight: 600;color:#FFFFFF ;background: #DA1F29;position: relative;left:-80px;top:-55px;text-align: center;}
  div.next div.paypwd div p{color: #FFF;margin-top:7px}
@@ -107,7 +107,7 @@ y{margin-right: 34px;}
  div.kuang{margin: auto;width:934px;height: 52px;background: #e5e5e4;position: relative;top: 24px;border:1px solid #464749 ;}
  div.kuang span{position: relative;left:138px;top:15px}
  div.kuang span.type{position: relative;left:650px;}
- /*è¯„è®ºä¿®æ”¹
+ /*ÆÀÂÛĞŞ¸Ä
  *wzl
  */
  div.daipinglun font.name{position:relative;left:-22px}
@@ -183,7 +183,7 @@ input.btm{width: 100px;height: 30px;background: #F39700;border:0;color:#fff}
  table.week tr th{width:50px;font-weight: 500;font-size: 12px;}
  table.freetime{float: right;position: relative;left:46.5px;top:-26px;border: 1px #464749 solid;}
  /*wzl123
- *ä¿®æ”¹merchartstuinfo.jsp
+ *ĞŞ¸Ämerchartstuinfo.jsp
  */
  table.date tr th{font-weight: 500;font-size: 12px;text-align: center;}
  table.date div.kong{border: 1px #464749 solid;width: 10px;height: 10px;margin-left:49px;}
@@ -224,35 +224,35 @@ input.btm{width: 100px;height: 30px;background: #F39700;border:0;color:#fff}
  div.say4{display: none; }
 .intus { height:100px; width:400px;}
 
-/*å°¾éƒ¨æ ·å¼
+/*Î²²¿ÑùÊ½
 *wzl123
 */
 .foot{float:right;width:100%;color:#fff}
 .footer{float:right;width:100%}
-/*å‘å¸ƒå…¼èŒå·¥ä½œåœ°ç‚¹
+/*·¢²¼¼æÖ°¹¤×÷µØµã
 *wzl123
 */
 	p.mar select#city{width:130px}
-/*è´¦æˆ·å®‰å…¨
+/*ÕË»§°²È«
 *wzl123
 */
 p.qiyong a{color:#666;position:relative;top:-3px;font-size:14px}
-/*å•†å®¶ä¸Šä¼ å›¾ç‰‡æç¤º
+/*ÉÌ¼ÒÉÏ´«Í¼Æ¬ÌáÊ¾
 *wzl123
 */
 .warm{margin-left:60px}
 .warm1{margin-left:70px}
-/*å•†å®¶å’Œå­¦ç”ŸåŸºæœ¬èµ„æ–™æç¤º
+/*ÉÌ¼ÒºÍÑ§Éú»ù±¾×ÊÁÏÌáÊ¾
 *wzl123
 *2015.12.15
 */
 .wenxinart{display: inline-block;margin-top: 3em;color: #F17F7F;font-size:10px  !important;font-weight:500 !important }
-/*å­¦ç”Ÿç»“ç®—æ—¥æç¤º
+/*Ñ§Éú½áËãÈÕÌáÊ¾
 *wzl123
 *2015.12.15
 */
 .wid{width:280px !important}
-/*ä¼ä¸šèµ„æ–™æ·»åŠ æ˜¯å¦å‰å°æ˜¾ç¤º
+/*ÆóÒµ×ÊÁÏÌí¼ÓÊÇ·ñÇ°Ì¨ÏÔÊ¾
 *wzl123
 *2015.12.21
 */
