@@ -22,6 +22,7 @@
     /**
      * 返回数据
      */
+	print_r($callback);
     if($callback) {
         echo '<script>'.$callback.'('.json_encode($info).')</script>';
     } else {
