@@ -89,7 +89,7 @@ use yii\helpers\ArrayHelper;
 				<?= $form->field($model,'ind_type',['template'=>'<div class="marleft5em" style="float:left;" >{label}{input}</div>'])->dropDownList(['1'=>'大学','2'=>'高中','3'=>'初中'],['prompt'=>'请选择类型']);?>
 				<?= $form->field($model,'ind_type',['template'=>'<div class="marleft1em" style="float:left;" >{label}{input}</div>'])->dropDownList(['1'=>'大学','2'=>'高中','3'=>'初中'],['prompt'=>'请选择类型']);?>
 			</div>
-			<?= $form->field($model,'mer_introduce',['template'=>'<div class="tr  padleft2em martop10 marb10">{label}{input}</div><div class="q_content" style="height:30px;margin-left:30px">{error}</div>'])->textarea(['id'=>'q_content','style'=>'width:700px;height:200px;visibility:hidden;'])?>
+			<?= $form->field($model,'mer_introduce',['template'=>'<div class="tr  padleft2em martop10 marb10">{label}{input}</div><div class="q_content" style="height:30px;margin-left:30px">{error}</div>'])->textarea(['id'=>'q_content','style'=>'width:700px;height:200px;visibility:hidden;','placeholder'=>'请输入内容'])?>
 
 			<div class="wid100 height30 back textcenter white marleft30">下一步</div>
 			</div>
@@ -111,8 +111,9 @@ use yii\helpers\ArrayHelper;
 				<div class="dis marright20" style="width: 5em;position: relative;top:-2em">
 					上传身份证
 				</div>
-				<div class="uploadimg" style="background: url(/public/images/zhenmian.png) ;background-size:120px 80px" >
-				</div>
+				<!-- <div class="uploadimg" style="background: url(/public/images/zhenmian.png) ;background-size:120px 80px" >
+				</div> -->
+				<?= $form->field($model,'mer_positive',['template'=>'<div class="" style="float:left;" >{label}{input}</div>{error}'])->fileInput(['class'=>'wid365','placeholder'=>'请选择上传文件']); ?> 
 				<div class="uploadimg" style="background: url(/public/images/fanmian.jpg);"></div>
 				<div class="martop20 marleft7em">只能上传jpg、jpeg、png类型的图片，大小不能超过2M</div>
 			</div>
@@ -132,7 +133,8 @@ use yii\helpers\ArrayHelper;
 				</div>
 				<div class="martop20 marleft6em">只能上传jpg、jpeg、png类型的图片，大小不能超过2M</div>
 			</div>
-			<div class="wid100 height30"><?= Html::submitButton('提交', ['class'=>'wid100 height30 back textcenter white marleft30','name' =>'submit-button',]) ?></div> 
+			<div class="wid100 height30">
+			<?= Html::submitButton('提交', ['class'=>'wid100 height30 back textcenter white marleft30','name' =>'submit-button',]) ?></div> 
 			<?php
 				ActiveForm::end();
 			?>

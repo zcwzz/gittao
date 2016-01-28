@@ -16,7 +16,7 @@ use yii\helpers\Html;
 <script type="text/javascript" src="/public/js/dataHandle.js"></script>
 <link rel="stylesheet" href="/public/css/jquery.css" type="text/css">
 <script type="text/javascript" src="/public/js/jquery.js"></script>
-
+<script src="/public/js/jquery-1.8.js" type="text/javascript"></script>
 
         <title>趣淘学</title>
 </head>
@@ -28,21 +28,7 @@ use yii\helpers\Html;
         <div class="mt_ri_1">
             <div class="mt_rt" id="topmenus"><ul><li class="img"> <img src="/public/images/us.jpg" height="100" width="100"></li><li class="wi1">   <h1>z请问</h1>   <p>手机号：13782519376</p></li><li class="wi2">预收余额：0.00</li><li class="wi3">   <a href="http://www.qutaoxue.net/merchant/merchantQuota"><span class="bg1">额度申请</span></a><a href="http://www.qutaoxue.net/merchant/merchantParttimeList"><span class="bg2">兼职结算</span></a> <a href="http://www.qutaoxue.net/merchant/merchantParttimeList"><span class="bg3">兼职审核</span></a></li></ul> <div class="clear"></div></div>
         </div>
-<!--         <div class="mt_le t_le" id="leftmenus">  
-        <a href="http://www.qutaoxue.net/merchant/merchantIndex" atr="home"><h1>我的门店  
-        </h1></a> 
-        <ul>     
-        <li><a href="http://www.qutaoxue.net/merchant/merchantOrder" atr="order">我的订单</a></li>     
-        <li><a href="http://www.qutaoxue.net/merchant/merchantComment" atr="comment">我的评论</a></li>     
-        <h2>我的兼职</h2>     
-        <li><a href="http://www.qutaoxue.net/merchant/merchantPublish" atr="publish">发布兼职</a></li>     
-        <li><a href="http://www.qutaoxue.net/merchant/merchantParttimeList" atr="list">兼职列表</a></li>     
-        <h2>企业设置</h2>     
-        <li><a href="" atr="base">基本资料</a></li>     
-        <li><a class="co" href="" atr="safe">账户安全</a></li>     
-        <li> <a href="" atr="account">账户余额</a></li>
-        </ul>
-        </div> -->
+
         <?php echo $this->render("_sjleftnav");?>
 
         <div class="mt_ri t_ri">
@@ -61,7 +47,7 @@ use yii\helpers\Html;
                                 <p>两种,长度为8-20个字符的密码。</p>
                             </m>
                             <div>
-                                <a href="javascript:void(0)" bik="/merchant/merchantUpdatePs?type=1" target="_blank" onclick="GLOBAL.pagebase.btnHrefClick(this)">修改</a>
+                                <a href="javascript:void(0)" class="xiugai"  onclick="GLOBAL.pagebase.btnHrefClick(this)">修改</a>
                             </div>
                         </div>
                         <div class="phone">
@@ -107,6 +93,11 @@ use yii\helpers\Html;
       GLOBAL.pagebase.loadingPageSafe();
            
         })
+    </script>
+    <script>
+    $(".xiugai").live('click',function(){
+        location.href="<?= URL::to(['meger/password'])?>";
+    })
     </script>
 
 </body></html>

@@ -4,17 +4,31 @@
 
 $this->title = '逃学叭叭叭吧';
 ?>
+<link href="public/css/jquery.slideBox.css" rel="stylesheet" type="text/css" />
+<script src="public/js/jquery.slideBox.js" type="text/javascript"></script>
+
 <div class="t_min t_tit">当前位置：<a href="#">首页</a></div>
     <div class="t_img" id="scrolldiv">
-        <div class="t_imglibt ">
-            <span class="bg"><a href="javascript:;" onclick="setscroll(0);"></a></span> <span><a href="javascript:;" onclick="setscroll(1);"></a></span> <span><a href="javascript:;" onclick="setscroll(2);"></a></span>
-        </div>
 
-        <div id="top_roll_pic">
-            <div class="t_imgli1"></div>
+<!-- 
+        <div id="top_roll_pic"> -->
+		<div id="demo1" class="slideBox">
+  <ul class="items">
+    <li><a href="#" title="这里是测试标题一"><img src="public/images/lunbo/1.jpg" height='450' width='1350'></a></li>
+    <li><a href="#" title="这里是测试标题二"><img src="public/images/lunbo/2.jpg" height='450' width='1350'></a></li>
+    <li><a href="#" title="这里是测试标题三"><img src="public/images/lunbo/3.jpg" height='450' width='1350'></a></li>
+    <li><a href="#" title="这里是测试标题四"><img src="public/images/lunbo/4.jpg" height='450' width='1350'></a></li>
+  </ul>
+</div>
+   
+    <!--Luara图片切换骨架end-->
+    <script>
+    
+    </script>
+            <!-- <div class="t_imgli1"></div>
             <div class="t_imgli2" style="display: none;"></div>
-            <div class="t_imgli3" style="display: none;"></div>
-        </div>
+            <div class="t_imgli3" style="display: none;"></div> 
+        </div>-->
 
     </div>
     <!--t_box-->
@@ -47,3 +61,28 @@ $this->title = '逃学叭叭叭吧';
     </div>
     
     <!--frdl end-->
+<link href="css/jquery.slideBox.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="js/jquery.slideBox.js" type="text/javascript"></script>
+<script>
+jQuery(function($){
+	$('#demo1').slideBox();
+	$('#demo2').slideBox({
+		direction : 'top',//left,top#方向
+		duration : 0.3,//滚动持续时间，单位：秒
+		easing : 'linear',//swing,linear//滚动特效
+		delay : 5,//滚动延迟时间，单位：秒
+		startIndex : 1//初始焦点顺序
+	});
+	$('#demo3').slideBox({
+		duration : 0.3,//滚动持续时间，单位：秒
+		easing : 'linear',//swing,linear//滚动特效
+		delay : 5,//滚动延迟时间，单位：秒
+		hideClickBar : false,//不自动隐藏点选按键
+		clickBarRadius : 10
+	});
+	$('#demo4').slideBox({
+		hideBottomBar : true//隐藏底栏
+	});
+});
+</script>

@@ -1,3 +1,7 @@
+<?php
+use yii\helpers\Html;
+use yii\widgets\LinkPager;
+?>
 <html><head><script src="/public/js/jquery-1.js" type="text/javascript"></script>
 <script src="/public/js/globl.js" type="text/javascript"></script>
 <script type="text/javascript" src="/public/js/jsbase.js"></script>
@@ -26,9 +30,10 @@
     <!--我的趣淘学-->
     <div class="t_min">
         <div class="mt_ri_1">
-            <div class="mt_rt" id="topmenus"><ul><li class="img"> <img src="/public/images/us.jpg" height="100" width="100"></li><li class="wi1">   <h1>231111请问</h1>   <p>手机号：13782519376</p></li><li class="wi2">预收余额：0.00</li><li class="wi3">   <a href="http://www.qutaoxue.net/merchant/merchantQuota"><span class="bg1">额度申请</span></a><a href="http://www.qutaoxue.net/merchant/merchantParttimeList"><span class="bg2">兼职结算</span></a> <a href="http://www.qutaoxue.net/merchant/merchantParttimeList"><span class="bg3">兼职审核</span></a></li></ul> <div class="clear"></div></div>
+         <?php echo $this->render('_hader');?>
         </div>
-        <div class="mt_le t_le" id="leftmenus">  <a href="http://www.qutaoxue.net/merchant/merchantIndex" atr="home"><h1>我的门店  </h1></a> <ul>     <li><a href="http://www.qutaoxue.net/merchant/merchantOrder" atr="order">我的订单</a></li>     <li><a href="http://www.qutaoxue.net/merchant/merchantComment" atr="comment">我的评论</a></li>     <h2>我的兼职</h2>     <li><a href="http://www.qutaoxue.net/merchant/merchantPublish" atr="publish">发布兼职</a></li>     <li><a class="co" href="http://www.qutaoxue.net/merchant/merchantParttimeList" atr="list">兼职列表</a></li>     <h2>企业设置</h2>     <li><a href="http://www.qutaoxue.net/merchant/merchantInfo" atr="base">基本资料</a></li>     <li><a href="http://www.qutaoxue.net/merchant/merchantSafe" atr="safe">账户安全</a></li>     <li> <a href="http://www.qutaoxue.net/merchant/merchantBalance" atr="account">账户余额</a></li> </ul></div>
+       <?php echo $this->render('_sjleftnav');?>
+	  
         <div class="mt_ri t_ri">
 
         <div class="mt_rli">
@@ -50,25 +55,51 @@
                         <th>操作 </th>
                         </tr>
                     </thead>
-                    <tbody id="parttimedate"></tbody>
+                    <tbody id="parttimedate">
+					<?php foreach($job as $v){ ?>
+						<tr>
+							<td><?php echo $v['job_id'] ?></td>
+							<td><?php echo $v['job_name'] ?></td>
+							<td><?php echo $v['part_name'] ?></td>
+							<td><?php echo $v['job_id'] ?></td>
+							<td><?php echo $v['job_money'] ?><?php echo $v['job_treatment'] ?></td>
+							<td><?php echo $v['count'] ?></td>
+							<td><?php echo $v['counts'] ?></td>
+							<td><?php 
+							if($v['status']!=$v['job_people']){
+								if($v['job_people']>$v['counts']){
+									echo '报名审核';
+								}else if($v['job_people']==$v['counts']){
+									echo '进行中';
+								}
+							}else{
+								echo "已结算";
+							}
+							?></td>
+							<td><?php
+							$id=$v['job_id'];
+							if($v['status']!=$v['job_people']){
+								if($v['job_people']>$v['counts']){
+									echo "<a href='examine?id=$id'>审核</a>";
+								}else if($v['job_people']==$v['counts']){
+									echo "<a href='stulists?id=$id'>结算</a>";
+								}
+							}else{
+								echo "已结算";
+							}
+							?></td>
+						</tr>
+					<?php } ?>
+					</tbody>
                 </table>
                 <script type="text/template" id="parttimedateTemplate">
-                    <tr class="tr">
-						<td>{number}</td>
-                        <td><a href='javascript:void(0)' onclick='GLOBAL.pagebase.searchStudentInfo({jobId})'>{name}</a></td>
-						<td>{workTypeName}</td>
-                        <td>
-                            {workBegin}
-                            </br>到{workEnd}
-                        </td>
-                        <td>{salary}{salaryTypeName}</td>
-						<td>{total}</td>
-						<td>{applyCount}</td>
-                        <td>{status}</td>
-                        <td class="pay" style="cursor: pointer;color: red;" >{options} </td>
-                    </tr>
+                   
                         </script>
-                <div id="kkpager"><div><span class="disabled">首页</span><span class="disabled">上一页</span><span class="curr">1</span><span class="disabled">下一页</span><span class="disabled">尾页</span><span class="totalText"></span></div><div style="clear:both;"></div></div>
+                <div id="kkpager"><?= LinkPager::widget([
+	'pagination' => $pagination,
+	'prevPageLabel'=>'上一页',
+	'nextPageLabel'=>'下一页',
+	]) ?></div>
             </div>
         </div>
     </div>

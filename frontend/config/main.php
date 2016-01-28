@@ -25,6 +25,7 @@ return [
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
             ],
         ],
+
 		'request' => [
             'enableCookieValidation' => true,
             'cookieValidationKey' => '123123',
@@ -45,6 +46,12 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+		'request' => [
+            'enableCookieValidation' => true,
+            'cookieValidationKey' => 'adwdwdwadwawadwawadda',
+        ]
+		
+
     ],
     'params' => $params,
 	
