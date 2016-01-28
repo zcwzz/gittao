@@ -13,6 +13,8 @@ use frontend\models\Parttype;
 use frontend\models\Partlist;
 use frontend\models\Parttimeorder;
 use frontend\models\Settlement;
+use frontend\models\Login;
+use frontend\models\Region;
 use yii\web\UploadedFile;
 
 /**
@@ -27,7 +29,15 @@ class BusinessController extends Controller
         $model = new Upload();
 		 $job = new Jobdetails();
 		 $part = new Parttype();
+		 $region = new Region();
+		 $reg=$region->select();
+
 		 $data=$part->select();
+
+		 Yii::$app->session->open();
+		$user_id=Yii::$app->session->get('user_id');
+	
+
         if (Yii::$app->request->isPost) {
 
 			$model->file = UploadedFile::getInstance($model,'file');
@@ -37,8 +47,7 @@ class BusinessController extends Controller
 				$model->file->saveAs('uploads/'. $model->file->baseName . '.' . $model->file->extension);
 				$img='uploads/'. $model->file->baseName . '.' . $model->file->extension;
 
-				Yii::$app->session->open();
-				$user_id=Yii::$app->session->get('user_id');
+				
 
 				$job -> merchants_id  = $user_id;
 				$job -> job_name  = Yii::$app->request->post('name');
@@ -77,8 +86,16 @@ class BusinessController extends Controller
 			
 		}
 
-        return $this->render('index', ['model' => $model,'part'=>$data]);
+        return $this->render('index', ['model' => $model,'part'=>$data,'reg'=>$reg]);
     }
+	public function actionCity(){
+		$id =Yii::$app->request->post('id');
+
+		 $region = new Region();
+		 $arr=$region->sele($id);
+		echo json_encode($arr);
+	}
+
 	//兼职列表
 	public function actionLists(){
 			 $job = new Jobdetails();

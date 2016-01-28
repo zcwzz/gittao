@@ -1,33 +1,13 @@
 <?php 
 	use yii\widgets\ActiveForm;
 ?>
-<html><head><script src="/public/js/jquery-1.js" type="text/javascript"></script>
-<script src="/public/js/globl.js" type="text/javascript"></script>
-<script type="text/javascript" src="/public/js/jsbase.js"></script>
-<script type="text/javascript" src="/public/js/url.js"></script>
-<script type="text/javascript" src="/public/js/dataHandle.js"></script>
-<link rel="stylesheet" href="/public/css/jquery.css" type="text/css">
-<script type="text/javascript" src="/public/js/jquery_002.js"></script>
-
-
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <!--[if lt IE 9]>
-    <script src="../Scripts/html5shiv.js"></script>
-    <![endif]-->
-    <title>趣淘学</title>
-    <link rel="stylesheet" href="/public/css/comm.css">
-    <link rel="stylesheet" href="/public/css/shop.css">
-    <link rel="stylesheet" href="/public/css/sty.css">
-    <link rel="stylesheet" href="/public/css/skin_v2.css">
-     <link rel="stylesheet" href="/public/css/publish.css">  
-    <link href="/public/css/validationEngine.css" rel="stylesheet" type="text/css">
-    <script src="/public/js/jquery_003.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/public/js/jquery.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript" src="/public/js/api"></script><script type="text/javascript" src="/public/js/getscript"></script>
-    <script src="/public/js/ajaxupload.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/public/js/WdatePicker.js"></script><link type="text/css" rel="stylesheet" href="/public/js/WdatePicker.css">
+
+<link rel="stylesheet" href="/public/css/comm.css">
+<link rel="stylesheet" href="/public/css/sty.css">
+<link rel="stylesheet" href="/public/css/shop.css">
+
+    <link rel="stylesheet" href="/public/css/skin_v2.css" />
 
 
     <div class="t_min t_tit">当前位置：<a href="http://www.qutaoxue.net/">首页</a> &gt; 我的趣淘学</div>
@@ -35,16 +15,7 @@
     <div class="t_min">
         <div class="mt_ri_1">
 
-            <div class="mt_rt" id="topmenus">
-
-			<ul>
-			<li class="img"> <img src="/public/images/us.jpg" height="100" width="100"></li>
-			<li class="wi1">   <h1>23112请问</h1>   <p>手机号：13782519376</p></li>
-			<li class="wi2">预收余额：0.00</li>
-			<li class="wi3">   <a href="http://www.qutaoxue.net/merchant/merchantQuota"><span class="bg1">额度申请</span></a><a href="http://www.qutaoxue.net/merchant/merchantParttimeList"><span class="bg2">兼职结算</span></a> <a href="http://www.qutaoxue.net/merchant/merchantParttimeList"><span class="bg3">兼职审核</span></a></li>
-			</ul>
-			
-			<div class="clear"></div></div>
+              <?php echo $this->render('_hader');?>
         </div>
         <?php echo $this->render('_sjleftnav');?>
         <div class="mt_ri t_ri">
@@ -207,9 +178,13 @@
 			<h3>工作地点</h3>
 			<span id="">
 				<m>*</m><label>工作地点：</label>
-				<select name="province" id="province" data-prompt-position="topRight" class="validate[required]"> <option selected="selected" value="">省</option><option value="110000">北京市</option><option value="120000">天津市</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="230000">黑龙江省</option><option value="310000">上海市</option><option value="320000">江苏省</option><option value="330000">浙江省</option><option value="340000">安徽省</option><option value="350000">福建省</option><option value="360000">江西省</option><option value="370000">山东省</option><option value="410000">河南省</option><option value="420000">湖北省</option><option value="430000">湖南省</option><option value="440000">广东省</option><option value="450000">广西壮族自治区</option><option value="460000">海南省</option><option value="500000">重庆市</option><option value="510000">四川省</option><option value="520000">贵州省</option><option value="530000">云南省</option><option value="540000">西藏自治区</option><option value="610000">陕西省</option><option value="620000">甘肃省</option><option value="630000">青海省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option><option value="990000">新疆建设兵团</option></select>
-				<select name="city" id="city" data-prompt-position="topRight" class="validate[required]"></select>
-				<select name="area" id="area" class="validate[required]"></select>
+				<select name="province" id="province" data-prompt-position="topRight" class="validate[required]"> <option selected="selected" value="">省</option>
+				<?php foreach($reg as $k=>$v){ ?>
+				<option value="<?php echo $v['region_id'] ?>" class="one"><?php echo $v['region_name'] ?></option>
+				<?php } ?>
+				</select>
+				<select name="city" id="two" data-prompt-position="topRight" class="validate[required]"><option selected="selected" value="">城市</option></select>
+				<select name="area" id="area" class="validate[required]"><option selected="selected" value="">区/县</option></select>
 			</span>
 			<span class="pd55">
 			<div id="r-result">请输入:<input type="text" id="suggestId" size="20" name="address" value="百度" style="width:150px;" /></div>
@@ -305,4 +280,43 @@
 		local.search(myValue);
 	}
 </script>
-
+<script type="text/javascript">
+	$(".one").on('click',function(){ 
+		var id=$(this).val(); 
+		if(id==0){
+			$(".two").html("<option value=0>请选择...");
+			die;
+		}
+		$.ajax({
+			 type:"POST",
+			url:"city",
+			data: "id="+id,
+			dataType:"json",
+			success: function(obj){
+				var str="";
+				var i=0;
+				for(i;i<obj.length;i++){
+					str+="<option value="+obj[i]['region_id']+" onclick='sara("+obj[i]['region_id']+")'>"+obj[i]['region_name']+"</option>";
+				}
+				$("#two").html(str);
+			}
+		});
+	}) 
+	function sara(id){
+	
+		$.ajax({
+			 type:"POST",
+			url:"city",
+			data: "id="+id,
+			dataType:"json",
+			success: function(obj){
+				var str="";
+				var i=0;
+				for(i;i<obj.length;i++){
+					str+="<option >"+obj[i]['region_name']+"</option>";
+				}
+				$("#area").html(str);
+			}
+		});
+	}
+</script>

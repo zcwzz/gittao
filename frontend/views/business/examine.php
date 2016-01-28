@@ -30,7 +30,7 @@ use yii\widgets\LinkPager;
     <!--我的趣淘学-->
     <div class="t_min">
         <div class="mt_ri_1">
-            <div class="mt_rt" id="topmenus"><ul><li class="img"> <img src="/public/images/us.jpg" height="100" width="100"></li><li class="wi1">   <h1>231111请问</h1>   <p>手机号：13782519376</p></li><li class="wi2">预收余额：0.00</li><li class="wi3">   <a href="http://www.qutaoxue.net/merchant/merchantQuota"><span class="bg1">额度申请</span></a><a href="http://www.qutaoxue.net/merchant/merchantParttimeList"><span class="bg2">兼职结算</span></a> <a href="http://www.qutaoxue.net/merchant/merchantParttimeList"><span class="bg3">兼职审核</span></a></li></ul> <div class="clear"></div></div>
+             <?php echo $this->render('_hader');?>
         </div>
        <?php echo $this->render('_sjleftnav');?>
         <div class="mt_ri t_ri">
