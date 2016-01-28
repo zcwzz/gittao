@@ -3,7 +3,7 @@
 			$user_id=Yii::$app->session->get('user_id');
 		$dsn="mysql:host=127.0.0.1;dbname=final";
 
-	$pdo=new PDO($dsn,'root','root');
+	$pdo=new PDO($dsn,'root','');
 	$pdo->exec("set names utf8");
 	$sql="select * from fin_user inner join fin_merchant_base on user_id=mer_id where user_id=$user_id";
 	$arr=$pdo->query($sql);
