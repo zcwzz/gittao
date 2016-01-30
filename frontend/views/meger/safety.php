@@ -47,7 +47,7 @@ use yii\helpers\Html;
                                 <p>两种,长度为8-20个字符的密码。</p>
                             </m>
                             <div>
-                                <a href="javascript:void(0)" class="xiugai"  onclick="GLOBAL.pagebase.btnHrefClick(this)">修改</a>
+                                <a href="<?= Url::to(['meger/password'])?>?detail=detail1" class="xiugai" fn="detail1" >修改</a>
                             </div>
                         </div>
                         <div class="phone">
@@ -57,7 +57,7 @@ use yii\helpers\Html;
                                 <p>请立即更换，避免账户被盗。</p>
                             </m>
                             <div>
-                                <a href="javascript:void(0)" bik="/merchant/merchantUpdatePs?type=3" target="a-frame" onclick="GLOBAL.pagebase.btnHrefClick(this)">修改</a>
+                                <a href="<?= Url::to(['meger/password'])?>?detail=detail2" class="xiugai" fn="detail2"  >修改</a>
                             </div>
                         </div>
                         <div class="paypwd">
@@ -68,7 +68,7 @@ use yii\helpers\Html;
                             </m>
                             <div style="background: rgb(255, 255, 255) none repeat scroll 0% 0%;">
                                 <p class="qiyong">
-                                    <a style="position: relative; left: 4px;" bik="/merchant/merchantUpdatePs?type=2" target="a-frame" href="javascript:void(0)" onclick="GLOBAL.pagebase.btnHrefClick(this)" class="">修改</a>
+                                    <a style="position: relative; left: 4px;" fn="detai3" class="xiugai" href="<?= Url::to(['meger/password'])?>?detail=detail3"  class="">修改</a>
                                 </p>
                             </div>
                         </div>
@@ -90,14 +90,22 @@ use yii\helpers\Html;
         $(function () {
         	  GLOBAL.pagebase.GetTop();
               GLOBAL.pagebase.City();
-      GLOBAL.pagebase.loadingPageSafe();
-           
+              GLOBAL.pagebase.loadingPageSafe();
         })
     </script>
     <script>
     $(".xiugai").live('click',function(){
-        location.href="<?= URL::to(['meger/password'])?>";
+        var xg1 = $(this).attr('fn');
+        $.ajax({
+           type: "POST",
+           url: "<?= URL::to(['meger/password'])?>",
+           data: "detail="+xg1,
+           /*success: function(msg){
+             location.href="password";
+           }*/
+        });
     })
     </script>
 
 </body></html>
+

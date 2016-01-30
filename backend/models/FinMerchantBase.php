@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\models;
+namespace backend\models;
 
 use Yii;
 
@@ -105,7 +105,7 @@ class FinMerchantBase extends \yii\db\ActiveRecord
             'mer_id' => 'Mer ID',
             'mer_name' => '企业名称',
             'mer_phone' => '手机号',
-            'mer_paypassword' => '支付密码',
+            'mer_paypassword' => 'Mer Paypassword',
             'mer_contact' => '联系人',
             'mer_conphone' => '联系电话',
             'mer_position' => '职位',

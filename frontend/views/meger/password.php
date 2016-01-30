@@ -46,13 +46,13 @@ use yii\helpers\Html;
         <div class="mt_ri t_ri">
             <div class="mt_rli">
                 <div id="top" style="border-bottom: solid 1px #ccd6d7; height: 64px; border-bottom:" class="studentdetailtop  borbot1" >
-                            <span id="detail" class="borbotff5400 colorff5400  dis" name="detail1" style="margin:0 ;">
+                            <span id="detail" class="borbotff5400 colorff5400 detail  dis" name="<?php if($detail['detail']=='detail1'){echo $detail['detail'];}else{echo 'detail1';}?>" style="margin:0 ;">
                             修改登录密码
                             </span>
-                            <span id="" class=" dis marleft30" style="margin:0 ;"  name="detail2" >
+                            <span id="" class=" dis marleft30 detail" style="margin:0 ;"  name="<?php if($detail['detail']=='detail2'){echo $detail['detail'];}else{echo 'detail2';}?>" >
                             修改支付密码
                             </span>
-                            <span id="" class=" dis marleft30" style="margin:0 ;"  name="detail3" >
+                            <span id="" class=" dis marleft30 detail" style="margin:0 ;"  name="<?php if($detail['detail']=='detail3'){echo $detail['detail'];}else{echo 'detail3';}?>" >
                             手机验证
                         </span>
                 </div>
@@ -65,18 +65,14 @@ use yii\helpers\Html;
 
                         <?= $form->field($model, 'user_pwd',['template'=>'<div class="tr height40 padleft2em" ><div class="first" style="float:left">{label}{input}</div>{error}</div>'])->textInput(['class'=>'wid200 marleft5em','placeholder'=>'请输入旧密码']) ?>
                         <span style="color: #9f9fa0; font-size: 12px;margin-left:80px">长度六位以上的数字和字母结合</span>
-                        <br>
-                        <br> <br>    
+                       <br><br>
                         <?= $form->field($model, 'user_password',['template'=>'<div class="tr height40 padleft2em" ><div class="first" style="float:left">{label}{input}</div>{error}</div>'])->textInput(['class'=>'wid200 marleft5em','placeholder'=>'请输入新密码']) ?>
                         <span style="color: #9f9fa0; font-size: 12px;margin-left:80px">不想更换请留空</span>
-                        <br>
-                        <br> <br>
+                        <br><br>
                           
                          <?= $form->field($model, 'isPassword',['template'=>'<div class="tr height40 padleft2em" ><div class="first" style="float:left">{label}{input}</div>{error}</div>'])->textInput(['class'=>'wid200 marleft5em','placeholder'=>'请输入确认密码']) ?>
                          <span style="color: #9f9fa0; font-size: 12px;margin-left:80px">再次输入与上面相同的密码</span>
-                        <br>
-                        
-                        <br> <br> 
+                        <br><br>
                         
                         <?= Html::submitButton('完成', ['class'=>'wid100 height30 back center white marleft50','name' =>'submit-button',]) ?>
                    <!--  </form> -->
@@ -93,27 +89,18 @@ use yii\helpers\Html;
                         
                         <?= $form->field($model, 'user_phone',['template'=>'<div class="tr height40 padleft2em" ><div class="first" style="float:left">{label}{input}</div>{error}</div>'])->textInput(['class'=>'wid200 marleft5em','placeholder'=>'请输入手机号码']) ?>
                         <span style="color: #9f9fa0; font-size: 12px;margin-left:100px">&nbsp;稍后您的手机将会收到短信验证码 60s后重发</span>
-                        <br>
-                        
                         <br><br>
-
 
                          <?= $form->field($model, 'smsValCode',['template'=>'<div class="tr height40 padleft2em" ><div class="first" style="float:left">{label}{input}</div>{error}<span class="mag" style="cursor: pointer; background:red;" id="smsValidCodeText" atr="0">获取验证码</span></div>'])->textInput(['class'=>'wid200 marleft5em','placeholder'=>'您的手机短信验证码']) ?>
                       
                         <span style="color: #9f9fa0; font-size: 12px;"></span>
-                        <br> <br>
-                      
+                        <br><br>
                         <?= $form->field($model, 'user_password',['template'=>'<div class="tr height40 padleft2em" ><div class="first" style="float:left">{label}{input}</div>{error}</div>'])->textInput(['class'=>'wid200 marleft5em','placeholder'=>'设置新密码']) ?>
                         <span style="color: #9f9fa0; font-size: 12px;margin-left:100px">长度为六位以上的数字和字母的组合</span>
-                        <br>
-                        
                         <br><br>
-                       
                         <?= $form->field($model, 'isPassword',['template'=>'<div class="tr height40 padleft2em" ><div class="first" style="float:left">{label}{input}</div>{error}</div>'])->textInput(['class'=>'wid200 marleft5em','placeholder'=>'请输入确认密码']) ?>
                         <span style="color: #9f9fa0; font-size: 12px;margin-left:100px">您再次输入与上面相同的密码</span>
-                        <br>
-                        
-                        <br> <br> <br>
+                        <br><br>
                        
                         <?= Html::submitButton('完成', ['class'=>'wid100 height30 back center white marleft50','name' =>'submit-button',]) ?>
                     <?php ActiveForm::end(); ?>
@@ -130,15 +117,11 @@ use yii\helpers\Html;
                             <input name="mobilephone" id="mobilephone" class="in1 validate[required,custom[mobile]] " placeholder="请输入手机号码" style="height:25px" type="text">
                         </span> -->
                         <?= $form->field($model, 'user_phone',['template'=>'<div class="tr height40 padleft2em" ><div class="first" style="float:left">{label}{input}</div>{error}</div>'])->textInput(['class'=>'wid200 marleft5em','placeholder'=>'请输入手机号码']) ?>
-
-
-                        <br> <br>
+                        <br><br>
                         <span style="font-size: 12px;margin-left:12px">
                             <?= $form->field($model, 'verifyCode',['template'=>'<div class="tr height40 padleft2em" ><div class="first" style="float:left">{label}{input}</div>{error}<span class="mag" style="cursor: pointer; background:red;" id="smsValidCodeText" atr="0">获取验证码</span></div>'])->textInput(['class'=>'wid200 marleft5em','placeholder'=>'您的手机短信验证码']) ?>
                             <span style="color: #9f9fa0; font-size: 12px;margin-left:100px">稍后您的手机将会收到短信验证码 60s后重发</span>
-                            <br>
-                            
-
+  
                         </span>
                         &nbsp;&nbsp;
                         <span style="color: #9f9fa0; font-size: 12px;"></span>
@@ -209,6 +192,22 @@ $(function(){
                 $('[name="content1"]').show();
             }
         })
+    })
+
+    $(document).ready(function(){
+        var id = "<?php echo $detail['detail'];?>";
+        $('[name^="detail"]').removeClass('borbotff5400 colorff5400');
+        $('.'+id).addClass('borbotff5400 colorff5400');
+        if(id=='detail3'){
+            $('[name^="content"]').hide();
+            $('[name="content3"]').show();
+        }else if(id=='detail2'){
+            $('[name^="content"]').hide();
+            $('[name="content2"]').show();
+        }else{
+            $('[name^="content"]').hide();
+            $('[name="content1"]').show();
+        }
     })
 </script>
 	

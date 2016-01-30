@@ -65,8 +65,6 @@ use yii\helpers\Url;
 				<td class="td-status"><span class="label radius">未审核</span></td>
 
 				<td class="td-manage">
-
-
                 <a style="text-decoration:none" onClick="member_unaccess(this,'10001')" href="javascript:;" title="审核不通过"><i class="Hui-iconfont">&#xe6e0;</i></a> 
 
                 <a style="text-decoration:none" onClick="member_access(this,'10001')" href="javascript:;" title="审核通过"><i class="Hui-iconfont">&#xe6e1;</i></a> 
@@ -75,7 +73,6 @@ use yii\helpers\Url;
 
                 <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe609;</i></a>
                 
-
                 </td>
 			</tr>
 

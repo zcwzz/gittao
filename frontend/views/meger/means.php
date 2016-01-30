@@ -42,13 +42,13 @@ use yii\helpers\ArrayHelper;
 			<div class='mt_ri t_ri'>
 			<div class="mt_rli">
 				<div class="studentdetailtop  borbot1" >
-					<span id="detail1" class="borbotff5400 colorff5400  dis" name="detail1" style="margin:0 ;">
+					<span id="detail1" class="borbotff5400 colorff5400  dis" name="detail1" fn="xg1" style="margin:0 ;">
 						企业信息
 					</span>
-					<span id="" class=" dis marleft30" style="margin:0 ;"  name="detail2" >
+					<span id="" class=" dis marleft30" style="margin:0 ;"  name="detail2" fn="xg2">
 						上传资料
 					</span>
-					<span id="" class=" dis marleft30" style="margin:0 ;"  name="detail3" >
+					<span id="" class=" dis marleft30" style="margin:0 ;"  name="detail3" fn="xg3">
 						优惠活动
 					</span>
 				</div>

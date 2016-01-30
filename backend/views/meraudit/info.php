@@ -42,84 +42,31 @@ use yii\helpers\Url;
 			<tr class="text-c">
 				<th width="25"><input type="checkbox" name="" value=""></th>
 				<th width="80">ID</th>
-				<th width="100">用户名</th>
-				<th width="40">性别</th>
-				<th width="90">手机</th>
-				<th width="150">邮箱</th>
+				<th width="100">学生名称/商家名称</th>
+				<th width="40">联系人</th>
+				<th width="90">联系电话</th>
+				<th width="150">职位</th>
 				<th width="">地址</th>
-				<th width="130">加入时间</th>
+				<th width="130">公司介绍</th>
+				<th width="70">注册时间</th>
 				<th width="70">状态</th>
 				<th width="100">操作</th>
 			</tr>
 		</thead>
+		<?php foreach($arr as $key=>$val){ ?>
 		<tbody>
 			<tr class="text-c">
 				<td><input type="checkbox" value="1" name=""></td>
-				<td>1</td>
-				<td><u style="cursor:pointer" class="text-primary" onclick="member_show('张三','<?= Url::to(['user/show']) ?>','10001','360','400')">张三</u></td>
-				<td>男</td>
-				<td>13000000000</td>
-				<td>admin@mail.com</td>
-				<td class="text-l">北京市 海淀区</td>
-				<td>2014-6-11 11:11:42</td>
+				<td><?php echo $val['mer_id']?></td>
+				<td><u style="cursor:pointer" class="text-primary" onclick="member_show('张三','<?= Url::to(['user/show']) ?>','10001','360','400')"><?php echo $val['mer_name']?></u></td>
+				<td><?php echo $val['mer_contact']?></td>
+				<td><?php echo $val['mer_conphone']?></td>
+				<td><?php echo $val['mer_position']?></td>
+				<td class="text-l"><?php echo $val['mer_address']?></td>
+				<td><?php echo $val['mer_introduce']?></td>
+				<td><?php echo date('Y-m-d H:i:s',$val['register_time'])?></td>
 				<td class="td-status"><span class="label radius">未审核</span></td>
-
 				<td class="td-manage">
-
-
-                <a style="text-decoration:none" onClick="member_unaccess(this,'10001')" href="javascript:;" title="审核不通过"><i class="Hui-iconfont">&#xe6e0;</i></a> 
-
-                <a style="text-decoration:none" onClick="member_access(this,'10001')" href="javascript:;" title="审核通过"><i class="Hui-iconfont">&#xe6e1;</i></a> 
-                
-                <a title="查看基本信息" href="javascript:;" onclick="base_info('查看基本信息','<?= Url::to(['meraudit/base-info']) ?>','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe60c;</i></a> 
-                
-                <a style="text-decoration:none" class="ml-5" onClick="cart_info('查看证件信息','<?= Url::to(['meraudit/card-info']) ?>','10001','600','270')" href="javascript:;" title="查看证件信息"><i class="Hui-iconfont">&#xe695;</i></a> 
-
-                <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe609;</i></a>
-                
-
-                </td>
-			</tr>
-
-            <tr class="text-c">
-				<td><input type="checkbox" value="1" name=""></td>
-				<td>1</td>
-				<td><u style="cursor:pointer" class="text-primary" onclick="member_show('张三','<?= Url::to(['user/show']) ?>','10001','360','400')">张三</u></td>
-				<td>男</td>
-				<td>13000000000</td>
-				<td>admin@mail.com</td>
-				<td class="text-l">北京市 海淀区</td>
-				<td>2014-6-11 11:11:42</td>
-				<td class="td-status"><span class="label label-error radius">审核未通过</span></td>
-
-				<td class="td-manage">
-                
-                <a style="text-decoration:none" onClick="member_unaccess(this,'10001')" href="javascript:;" title="审核不通过"><i class="Hui-iconfont">&#xe6e0;</i></a> 
-
-                <a style="text-decoration:none" onClick="member_access(this,'10001')" href="javascript:;" title="审核通过"><i class="Hui-iconfont">&#xe6e1;</i></a> 
-                
-                <a title="查看基本信息" href="javascript:;" onclick="base_info('查看基本信息','<?= Url::to(['meraudit/base-info']) ?>','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe60c;</i></a> 
-                
-                <a style="text-decoration:none" class="ml-5" onClick="cart_info('查看证件信息','<?= Url::to(['meraudit/card-info']) ?>','10001','600','270')" href="javascript:;" title="查看证件信息"><i class="Hui-iconfont">&#xe695;</i></a> 
-
-                <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe609;</i></a>
-
-                </td>
-			</tr>
-
-            <tr class="text-c">
-				<td><input type="checkbox" value="1" name=""></td>
-				<td>1</td>
-				<td><u style="cursor:pointer" class="text-primary" onclick="member_show('张三','<?= Url::to(['user/show']) ?>','10001','360','400')">张三</u></td>
-				<td>男</td>
-				<td>13000000000</td>
-				<td>admin@mail.com</td>
-				<td class="text-l">北京市 海淀区</td>
-				<td>2014-6-11 11:11:42</td>
-				<td class="td-status"><span class="label label-success radius">审核成功</span></td>
-
-				<td class="td-manage">
-                
                 <a style="text-decoration:none" onClick="member_unaccess(this,'10001')" href="javascript:;" title="审核不通过"><i class="Hui-iconfont">&#xe6e0;</i></a> 
 
                 <a style="text-decoration:none" onClick="member_access(this,'10001')" href="javascript:;" title="审核通过"><i class="Hui-iconfont">&#xe6e1;</i></a> 
@@ -131,9 +78,8 @@ use yii\helpers\Url;
                 <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe609;</i></a>
                 </td>
 			</tr>
-
-            
 		</tbody>
+		<?php }?>
 	</table>
 	</div>
 </div>

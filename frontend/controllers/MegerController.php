@@ -7,9 +7,10 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 //引用model
-use app\models\FinMerchantBase;
-use app\models\FinRegion;
+use frontend\models\FinMerchantBase;
+use frontend\models\FinRegion;
 use frontend\models\FinUser;
+use frontend\models\FinShopLimitApply;
 header("content-type:text/html;charset=utf8");
 /*
 *商家 韩利会
@@ -17,7 +18,7 @@ header("content-type:text/html;charset=utf8");
 class MegerController extends Controller{
 	/*
 	 * 我的企业兼职+消费企业首页
-	 */
+	*/
 	public $enableCsrfValidation = false;
     public function actionIndex(){
         return $this->render('index');
@@ -32,7 +33,18 @@ class MegerController extends Controller{
     *我的企业+限额申请
     */
     public function actionQuota(){
-    	return $this->render("limit");
+    	$model = new FinShopLimitApply;
+    	return $this->render("limit",['model'=>$model]);
+    }
+    /*
+    *提交申请入库
+    */
+    public function actionApply(){
+    	$model = new FinShopLimitApply;
+    	$data = yii::$app->request->post();
+    	$arr = $model->applyadd($data);
+    	print_r($arr);
+
     }
     /*
     *账户安全
@@ -112,20 +124,36 @@ class MegerController extends Controller{
 	*修改密码
 	*/
 	public function actionPassword(){
+		$xg = yii::$app->request->get();
+		if(empty($xg)){
+			$xg['detail'] = "detail1";
+		}
 		$model = new FinUser;
-		return $this->render("password",['model'=>$model]);
-		// return $this->render("password");
+		return $this->render("password",['model'=>$model,'detail'=>$xg]);
 	}
 	/*
 	*修改密码
 	*/
 	public function actionUpdpwd(){
+		$session = Yii::$app->session;
+		$user_id = $session->get('user_id');
 		$data = yii::$app->request->post();
-		$user_pwd = $data['FinUser']['user_pwd'];
-		$model = new FinUser;
-		$arr = $model->Userupdpwd($user_pwd);
+	
+		$user_pwd = md5($data['FinUser']['user_pwd']);
+		$new_pwd  = md5($data['FinUser']['user_password']);
+		$arr=FinUser::find()->where("user_id=".$user_id)->asarray()->one();
+		if($arr){
+			if($arr['user_password']==$user_pwd){
+				$model = new FinUser;
+				$res = $model->Userupdpwd($user_id,$new_pwd);
+				echo "<script>alert('修改密码成功！');location.href='password'</script>";
 
-		print_r($arr);
+			}else{
+				echo "<script>alert('密码输入有误');location.href='password'</script>";
+				die;
+			}
+		}else{
+			echo "<script>alert('有户名不存在');location.href='password'</script>";
+		}
 	}
-
 }

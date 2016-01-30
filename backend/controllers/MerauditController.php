@@ -2,6 +2,12 @@
 namespace backend\controllers;
 
 use Yii;
+/*
+*后台商家
+*/
+//加载model
+use backend\models\FinMerchantBase;
+use backend\models\FinUser;
 /**
  * 商家审核管理
  */
@@ -10,9 +16,10 @@ class MerauditController extends BaseController
       /**
      * 商家信息审核
      */
-    public function actionInfo()
-    {
-        return $this->render('info');
+    public function actionInfo(){
+        $model = new FinMerchantBase;
+        $arr = $model->selinfo();
+        return $this->render('info',['arr'=>$arr]);
     }
      /**
      * 发布兼职审核

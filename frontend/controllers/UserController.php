@@ -172,7 +172,7 @@ class UserController extends Controller
 			$session->open();
 			$session->set('user_id',$res['user_id']);
 			//print_r($res);
-			echo "登录成功，session为 user_id=".$session->get('user_id');
+			echo "登录成功，session为 user_id=".$session->get('user_id');		
 		}else
 		{
 			echo "用户名或密码错误！！";
@@ -203,6 +203,4 @@ class UserController extends Controller
 			die;
 		}
 	}
-
-
 }

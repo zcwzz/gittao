@@ -93,12 +93,12 @@ AppAsset::register($this);
                     <div id="listCity">
 
 					<?php 
-						$cache = \Yii::$app->cache;
-						$city=$cache->get('cit');
-						foreach($city as $v){
+						// $cache = \Yii::$app->cache;
+						// $city=$cache->get('cit');
+						// foreach($city as $v){
 					?>
-					<a class="city_links" href="#"  city='<?php echo $v['region_id'];?>' ><?php echo $v['region_name'];?></a>
-					<?php }?>
+					<a class="city_links" href="#"  city='' ><!--  --></a>
+					<!--  -->
 
                         <!-- <a class="city_links" href="#" onclick="document.getElementById('city_link').style='z-index:-1;position:absolute; left:10px; top:30px;';return !1;">北京</a>
                         <a class="city_links" href="#" onclick="document.getElementById('city_link').style='z-index:-1;position:absolute; left:10px; top:30px;';return !1;">南京</a> -->

@@ -1,7 +1,6 @@
 <?php
 
-namespace frontend\models;
-
+namespace backend\models;
 
 use Yii;
 
@@ -53,13 +52,11 @@ class FinUser extends \yii\db\ActiveRecord
     /*
     *修改密码
     */
-    public function Userupdpwd($user_id,$user_pwd){
-        
-        $userupd = FinUser::find()->where(['user_id'=>$user_id])->one();
-        $userupd->user_password = $user_pwd;
-        $userupd->save(false);
-        // print_r($userupd->save()); 
-    }
+    // public function Userupdpwd($user_id){
+    //     // return $this->find()->where(['user_id'=>$user_id])->asarray()->one();
+    //     $model = new FinUser;
+    //     $arr = $model->
+    // }
 
     /**
      * @inheritdoc
