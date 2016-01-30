@@ -89,7 +89,7 @@ use yii\widgets\LinkPager;
 			var keyword = $("#keyword").val(); 
 			$.ajax({
 			   type: "GET",
-			   url: "index.php?r=consumption/search_order",
+			   url: "search_order",
 			   data: "key="+key+"&keyword="+keyword,
 			   success: function(msg){
 				   //alert(msg);
@@ -102,7 +102,7 @@ use yii\widgets\LinkPager;
         var page = $(this).html()
         $.ajax({
             type : "get",
-            url : "<?php echo \Yii::$app->urlManager->createUrl('consumption/search_order')?>",
+            url : "search_order",
             //dataType:'json',
             data : 'page='+page,
             success: function(msg){
